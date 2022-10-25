@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: material
+  m_Name: Default
   m_Shader: {fileID: 4800000, guid: 6b51316ec1ab7ee4b908dad96fbf0d5e, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
@@ -91,7 +91,7 @@ Material:
     - _ZTest: 2
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0, g: 0, b: 0.3018868, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}

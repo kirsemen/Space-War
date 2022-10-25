@@ -6,7 +6,7 @@ public class Grid : MonoBehaviour
 {
     public GridElement[,] grid;
     public Vector2Int maxSize = new Vector2Int();
-    static public Grid G1;
+    static public Grid S1;
     private void Awake()
     {
         for (int i = 0; i < transform.childCount; i++)
@@ -19,7 +19,7 @@ public class Grid : MonoBehaviour
     }
     private void Start()
     {
-        G1 = this;
+        S1 = this;
         grid = new GridElement[maxSize.y, maxSize.x];
         for (int i = 0; i < transform.childCount; i++)
         {

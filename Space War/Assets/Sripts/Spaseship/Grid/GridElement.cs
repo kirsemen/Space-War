@@ -6,64 +6,53 @@ using UnityEngine.PlayerLoop;
 public class GridElement : MonoBehaviour
 {
     public Vector2Int position = new Vector2Int(0, 0);
+    public Modules.Type type = new Modules.Type();
+
+    private void Update()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(true);
+
+        var obj = Modules.S1.GetSelectedModule(9);
+        if (obj != null)
+        {
+            var module = obj.GetComponent<Module>();
+            if (module.gridPos.x != -1)
+                for (int i = 0; i < module.size.x; i++)
+                    for (int j = 0; j < module.size.y; j++)
+                        if ((module.gridPos.x + i) == position.x && (module.gridPos.y + j) == position.y)
+                        {
+                            transform.GetChild(0).gameObject.SetActive(true);
+                            transform.GetChild(1).gameObject.SetActive(false);
+                        }
+            
+            if (!IsUnitedByType(module))
+            {
+                transform.GetChild(1).gameObject.SetActive(false);
+            }
 
 
-    //static public void ConnectModule(Module module, Vector2Int _position)
-    //{
-    //    _position -= module.size / 2;
-    //    var size = module.size;
-    //    size -= module.size / 2;
+        }
+    }
+    public bool IsUnitedByType(Module module)
+    {
+        bool s = true;
+        foreach (var item in module.type.GetTypeIndex())
+        {
+            bool include = false;
+            foreach (var item1 in type.GetTypeIndex())
+                if (item1 == item)
+                {
+                    include = true; break;
 
-    //    if (_position.x < 0)
-    //        _position.x = 0;
-    //    if (_position.y < 0)
-    //        _position.y = 0;
-    //    for (int x = _position.x; x > _position.x - size.x; x--)
-    //        for (int y = _position.y; y > _position.y - size.y; y--)
-    //        {
-    //            var position = new Vector2Int(x, y);
-    //            if ((position + module.size).x <= maxSize.x && position.x >= 0 && (position + module.size).y <= maxSize.y && position.y >= 0)
-    //            {
-    //                bool isIn = false;
-    //                foreach (var item in modules)
-    //                {
-    //                    if ((
-    //                        ((position.x <= item.gridPos.x && item.gridPos.x <= (position.x + module.size.x - 1)) ||
-    //                        (position.x <= (item.gridPos.x + item.size.x - 1) && (item.gridPos.x + item.size.x - 1) <= (position.x + module.size.x - 1))) &&
-    //                        ((position.y <= item.gridPos.y && item.gridPos.y <= (position.y + module.size.y - 1)) ||
-    //                        (position.y <= (item.gridPos.y + item.size.y - 1) && (item.gridPos.y + item.size.y - 1) <= (position.y + module.size.y - 1)))
-    //                        )||(
-    //                        ((item.gridPos.x<= position.x && position.x <= (item.gridPos.x + item.size.x - 1)) ||
-    //                        (item.gridPos.x<= (position.x + module.size.x - 1)&& (position.x + module.size.x - 1)<= (item.gridPos.x + item.size.x - 1)))&&
-    //                        ((item.gridPos.y <= position.y && position.y <= (item.gridPos.y + item.size.y - 1)) ||
-    //                        (item.gridPos.y <= (position.y + module.size.y - 1) && (position.y + module.size.y - 1) <= (item.gridPos.y + item.size.y - 1)))
-    //                        ))
-    //                    {
-    //                        isIn = true;
-    //                        break;
-    //                    }
-    //                }
-    //                if (isIn)
-    //                {
-    //                    module.gridPos.x = -1;
-    //                    module.gridPos.y = -1;
-    //                    return;
-    //                }
+                }
+            if (!include)
+            {
+                s = false; break;
 
+            }
+        }
+        return s;
+    }
 
-    //                module.gameObject.transform.position = list[position.y, position.x].gameObject.transform.position + module.margin;
-    //                for (int i = 0; i < module.size.x; i++)
-    //                    for (int j = 0; j < module.size.y; j++)
-    //                    {
-    //                        list[j + position.y, i + position.x].gameObject.transform.Find("Cube").gameObject.SetActive(true);
-    //                        list[j + position.y, i + position.x].gameObject.transform.Find("Plane").gameObject.SetActive(false);
-    //                    }
-    //                module.gridPos.x = x;
-    //                module.gridPos.y = y;
-    //                return;
-    //            }
-    //        }
-    //    module.gridPos.x = -1;
-    //    module.gridPos.y = -1;
-    //}
 }

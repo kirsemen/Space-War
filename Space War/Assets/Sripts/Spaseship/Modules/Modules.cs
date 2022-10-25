@@ -1,9 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Modules : MonoBehaviour
 {
+    [System.Serializable]
+    public class Type
+    {
+        [Flags]
+        public enum _Type
+        {
+            weaponry = 0b1,
+            armor = 0b10,
+            engine = 0b100,
+            generator = 0b1000
+        };
+        public _Type type;
+        public int[] GetTypeIndex() 
+        {
+            List<int> output= new List<int>();
+            for (int i = 0; i <4; i++)
+            {
+                if ((Convert.ToInt32(type)>>i  ) % 2 == 1|| (Convert.ToInt32(type)==-1))
+                {
+                    output.Add(i);
+                }
+            }
+            return output.ToArray();
+        }
+    }
+
+
     public List<Module> Equipped;
     public List<Module> Unequipped;
     static public Modules S1;
@@ -61,7 +89,7 @@ public class Modules : MonoBehaviour
             for (int y = pos.y; y > pos.y - size.y; y--)
             {
                 var position = new Vector2Int(x, y);
-                if ((position + module.size).x <= Grid.G1.maxSize.x && position.x >= 0 && (position + module.size).y <= Grid.G1.maxSize.y && position.y >= 0)
+                if ((position + module.size).x <= Grid.S1.maxSize.x && position.x >= 0 && (position + module.size).y <= Grid.S1.maxSize.y && position.y >= 0)
                 {
                     bool isIn = false;
                     foreach (var item in Equipped)
@@ -88,9 +116,14 @@ public class Modules : MonoBehaviour
                         return new Vector2Int(-1, -1);
                     }
 
+                    for (int i = 0; i < module.size.x; i++)
+                        for (int j = 0; j < module.size.y; j++)
+                            if (!Grid.S1.grid[j+y, i+x].IsUnitedByType(module))
+                            {
+                                return new Vector2Int(-1, -1);
+                            }
 
-
-                    return position;
+                            return position;
                 }
             }
         return new Vector2Int(-1, -1);
@@ -99,16 +132,27 @@ public class Modules : MonoBehaviour
     public void ConnectModule(Module module, Vector2Int pos)
     {
         module.gridPos = GetGridPos(module, pos);
-        if (module.gridPos.x != -1)
-        {
-            for (int i = 0; i < module.size.x; i++)
-                for (int j = 0; j < module.size.y; j++)
-                {
-                    Grid.G1.grid[j + module.gridPos.y, i + module.gridPos.x].gameObject.transform.Find("Cube").gameObject.SetActive(true);
-                    Grid.G1.grid[j + module.gridPos.y, i + module.gridPos.x].gameObject.transform.Find("Plane").gameObject.SetActive(false);
-                }
-        }
         EquipModule(module);
         module.SetPosByGrid();
+    }
+
+    public GameObject GetSelectedModule(int layer)
+    {
+        foreach (var item in Equipped)
+        {
+            if (item.gameObject.layer == layer)
+            {
+                return item.gameObject;
+            }
+        }
+        foreach (var item in Unequipped)
+        {
+            if (item.gameObject.layer == layer)
+            {
+                return item.gameObject;
+            }
+        }
+        return null;
+
     }
 }

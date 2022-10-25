@@ -32,12 +32,6 @@ public class InputCameraController : MonoBehaviour
     {
         transform.rotation = Mesh.transform.rotation;
 
-        for (int i = 0; i < Mesh.transform.Find("Grid").childCount; i++)
-        {
-            var child = Mesh.transform.Find("Grid").GetChild(i);
-            child.Find("Cube").gameObject.SetActive(false);
-            child.Find("Plane").gameObject.SetActive(true);
-        }
 
         if (Q != null)
         {
