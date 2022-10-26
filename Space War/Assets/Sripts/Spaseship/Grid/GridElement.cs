@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class GridElement : MonoBehaviour
 {
@@ -25,13 +24,32 @@ public class GridElement : MonoBehaviour
                             transform.GetChild(0).gameObject.SetActive(true);
                             transform.GetChild(1).gameObject.SetActive(false);
                         }
-            
+
+
+            var indexs = module.type.GetTypeIndex();
+            Color newColor = new Color();
+            foreach (var i in indexs)
+                newColor += Grid.S1.colorForTypes[i] / indexs.Length;
+            Color oldColor = transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.GetColor("_Color");
+            oldColor.r = newColor.r; oldColor.g = newColor.g; oldColor.b = newColor.b;
+            transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", oldColor);
             if (!IsUnitedByType(module))
             {
                 transform.GetChild(1).gameObject.SetActive(false);
+                newColor = new Color();
             }
-
-
+            oldColor = transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.GetColor("_Color");
+            oldColor.r = newColor.r; oldColor.g = newColor.g; oldColor.b = newColor.b;
+            transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", oldColor);
+        }
+        else
+        {
+            Color oldColor = transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.GetColor("_Color");
+            oldColor.r = 0; oldColor.g = 0; oldColor.b = 0;
+            transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", oldColor);
+            oldColor = transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.GetColor("_Color");
+            oldColor.r = 0; oldColor.g = 0; oldColor.b = 0;
+            transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", oldColor);
         }
     }
     public bool IsUnitedByType(Module module)
@@ -43,13 +61,13 @@ public class GridElement : MonoBehaviour
             foreach (var item1 in type.GetTypeIndex())
                 if (item1 == item)
                 {
-                    include = true; break;
-
+                    include = true;
+                    break;
                 }
             if (!include)
             {
-                s = false; break;
-
+                s = false;
+                break;
             }
         }
         return s;

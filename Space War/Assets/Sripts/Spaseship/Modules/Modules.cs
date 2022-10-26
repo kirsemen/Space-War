@@ -80,11 +80,14 @@ public class Modules : MonoBehaviour
         pos -= module.size / 2;
         var size = module.size;
         size -= module.size / 2;
-
         if (pos.x < 0)
             pos.x = 0;
         if (pos.y < 0)
             pos.y = 0;
+
+        Debug.Log(pos);
+        Debug.Log(size);
+
         for (int x = pos.x; x > pos.x - size.x; x--)
             for (int y = pos.y; y > pos.y - size.y; y--)
             {

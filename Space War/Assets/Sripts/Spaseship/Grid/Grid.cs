@@ -6,7 +6,9 @@ public class Grid : MonoBehaviour
 {
     public GridElement[,] grid;
     public Vector2Int maxSize = new Vector2Int();
+    public Color[] colorForTypes= new Color[4]; 
     static public Grid S1;
+    
     private void Awake()
     {
         for (int i = 0; i < transform.childCount; i++)
