@@ -23,7 +23,7 @@ public class MovingController : MonoBehaviour
     private bool _keyChangeSpeedDown = false;
     private bool _supportedSpeedIsO = false;
 
-    void Update()
+    void FixedUpdate()
     {
 
 

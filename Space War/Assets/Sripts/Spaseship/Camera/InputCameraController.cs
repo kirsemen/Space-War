@@ -5,8 +5,7 @@ using UnityEngineInternal;
 
 public class InputCameraController : MonoBehaviour
 {
-    public GameObject Mesh;
-    public GameObject Q;
+    public InputModule Q;
 
     public GameObject E;
 
@@ -30,7 +29,6 @@ public class InputCameraController : MonoBehaviour
 
     void Update()
     {
-        transform.rotation = Mesh.transform.rotation;
 
 
         if (Q != null)
@@ -42,12 +40,12 @@ public class InputCameraController : MonoBehaviour
             {
                 var G = hit.collider.gameObject.transform.parent;
                 Q.transform.position = ray.direction * hit.distance * 0.7f + transform.GetChild(0).position;
-                Modules.S1.ConnectModule(Q.GetComponent<Module>(), G.GetComponent<GridElement>().position);
+                Q.ConnectModule(G.GetComponent<InputGridElement>().position);
             }
             else
             {
-                Q.GetComponent<Module>().gridPos.x = -1;
-                Q.GetComponent<Module>().gridPos.y = -1;
+                Q.gridPos.x = -1;
+                Q.gridPos.y = -1;
 
                 Ray ray1 = Camera.main.ScreenPointToRay(Input.mousePosition);
                 int a1 = (1 << 8);
@@ -63,9 +61,9 @@ public class InputCameraController : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                Modules.S1.EquipModule(Q.GetComponent<Module>());
-
-                Q.layer = 8;
+                
+                Q.transform.GetChild(0).gameObject.layer = 8;
+                
                 Q = null;
             }
         }
@@ -78,8 +76,8 @@ public class InputCameraController : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, 100, a))
                 {
-                    Q = hit.collider.gameObject;
-                    Q.layer = 9;
+                    Q = hit.collider.transform.parent.GetComponent<InputModule>();
+                    Q.transform.GetChild(0).gameObject.layer = 9;
                 }
 
             }
