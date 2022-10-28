@@ -8,7 +8,7 @@ public class Bezier : MonoBehaviour
 {
     private BezierPoint[] objects = new BezierPoint[0];
     public bool draw = true;
-
+    public float position = 0;
 
     private void Awake()
     {
@@ -44,21 +44,11 @@ public class Bezier : MonoBehaviour
                     Gizmos.DrawLine(preveousePoint, point);
                     preveousePoint = point;
                 }
-                if (objects[i].transform.localPosition.z > -0.5f && -0.5f > objects[i1].transform.localPosition.z)
-                {
-                    var p0 = objects[i].transform.position.z;
-                    var p1 = objects[i].transform.position.z + objects[i].SecondBezierPoint.z;
-                    var p2 = objects[i1].transform.position.z + objects[i1].SecondBezierPoint.z;
-                    var p3 = objects[i1].transform.position.z;
-                    float t = GetTime(p0, p1, p2, p3, 2.0f);
-                    Vector3 point = GetPoint(objects[i], objects[i1], t);
-
-                }
 
             }
         }
     }
-    public static Vector2 GetLinesCrossVector(Vector2 A, Vector2 B, Vector2 C, Vector2 D) 
+    public static Vector2 GetLinesCrossVector(Vector2 A, Vector2 B, Vector2 C, Vector2 D)
     {
         float xo = A.x, yo = A.y;
         float p = B.x - A.x, q = B.y - A.y;
@@ -74,34 +64,90 @@ public class Bezier : MonoBehaviour
         return new Vector2(x, y);
     }
 
-    public static float GetTime(float p0, float p1, float p2, float p3, float l)
+    public static Vector3 GetPointByZPosition(Bezier b, float l)
     {
-        int sigmentsNumber = 100;
-        float[] ls = new float[sigmentsNumber];
-        for (int t = 0; t < sigmentsNumber; t++)
+        
+        for (int i = 0; i < b.objects.Length - 1; i++)
         {
-            ls[t] = GetPoint(p0, p1, p2, p3, (float)t / sigmentsNumber);
-        }
-        float time = 0;
-        float min = MathF.Abs(ls[0] - l);
-        for (int t = 1; t < sigmentsNumber; t++)
-        {
-            if (MathF.Abs(ls[t] - l) < min)
+            int i1 = i + 1;
+            if (b.objects[i].transform.position.z > l && l > b.objects[i1].transform.position.z)
             {
-                min = MathF.Abs(ls[t] - l);
-                time = (float)t / sigmentsNumber;
+                var bp1 = b.objects[i];
+                var bp2 = b.objects[i1];
+
+                var p0 = bp1.transform.position.z;
+                var p1 = bp1.transform.position.z + bp1.SecondBezierPoint.z;
+                var p2 = bp2.transform.position.z - bp2.SecondBezierPoint.z;
+                var p3 = bp2.transform.position.z;
+
+
+                int sigmentsNumber = 100;
+                float[] ls = new float[sigmentsNumber];
+                for (int t = 0; t < sigmentsNumber; t++)
+                {
+                    ls[t] = GetPoint(p0, p1, p2, p3, (float)t / sigmentsNumber);
+                }
+                float time = 0;
+                float min = MathF.Abs(ls[0] - l);
+                for (int t = 1; t < sigmentsNumber; t++)
+                {
+                    if (MathF.Abs(ls[t] - l) < min)
+                    {
+                        min = MathF.Abs(ls[t] - l);
+                        time = (float)t / sigmentsNumber;
+                    }
+                }
+                return GetPoint(bp1,bp2,time);
             }
         }
-        return time;
 
+        return Vector3.zero;
     }
+    public static Vector3 GetDerivativeByZPosition(Bezier b, float l)
+    {
 
+        for (int i = 0; i < b.objects.Length - 1; i++)
+        {
+            int i1 = i + 1;
+            if (b.objects[i].transform.position.z > l && l > b.objects[i1].transform.position.z)
+            {
+                var bp1 = b.objects[i];
+                var bp2 = b.objects[i1];
+
+                var p0 = bp1.transform.position.z;
+                var p1 = bp1.transform.position.z + bp1.SecondBezierPoint.z;
+                var p2 = bp2.transform.position.z - bp2.SecondBezierPoint.z;
+                var p3 = bp2.transform.position.z;
+
+
+                int sigmentsNumber = 100;
+                float[] ls = new float[sigmentsNumber];
+                for (int t = 0; t < sigmentsNumber; t++)
+                {
+                    ls[t] = GetPoint(p0, p1, p2, p3, (float)t / sigmentsNumber);
+                }
+                float time = 0;
+                float min = MathF.Abs(ls[0] - l);
+                for (int t = 1; t < sigmentsNumber; t++)
+                {
+                    if (MathF.Abs(ls[t] - l) < min)
+                    {
+                        min = MathF.Abs(ls[t] - l);
+                        time = (float)t / sigmentsNumber;
+                    }
+                }
+                return GetFirstDerivative(bp1, bp2, time);
+            }
+        }
+
+        return Vector3.zero;
+    }
 
     public static Vector3 GetPoint(BezierPoint bp1, BezierPoint bp2, float t)
     {
         var p0 = bp1.transform.position;
         var p1 = bp1.transform.position + bp1.SecondBezierPoint;
-        var p2 = bp2.transform.position + bp2.SecondBezierPoint;
+        var p2 = bp2.transform.position - bp2.SecondBezierPoint;
         var p3 = bp2.transform.position;
 
 
@@ -128,7 +174,7 @@ public class Bezier : MonoBehaviour
     {
         var p0 = bp1.transform.position;
         var p1 = bp1.transform.position + bp1.SecondBezierPoint;
-        var p2 = bp2.transform.position + bp2.SecondBezierPoint;
+        var p2 = bp2.transform.position - bp2.SecondBezierPoint;
         var p3 = bp2.transform.position;
 
         t = Mathf.Clamp01(t);
