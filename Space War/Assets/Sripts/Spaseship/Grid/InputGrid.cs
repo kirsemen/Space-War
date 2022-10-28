@@ -8,7 +8,6 @@ public class InputGrid : MonoBehaviour
     public Vector2Int maxSize = new Vector2Int();
     public Color[] colorForTypes = new Color[4];
     static public InputGrid S1;
-    public OutputGrid OG;
 
 
     public void Start()

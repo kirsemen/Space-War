@@ -9,6 +9,11 @@ public class InputGridElement : MonoBehaviour
 
     private void Update()
     {
+        if (type.GetTypeIndex().Length == 0)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(true);
 
@@ -52,7 +57,40 @@ public class InputGridElement : MonoBehaviour
             oldColor.r = 0; oldColor.g = 0; oldColor.b = 0;
             transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", oldColor);
         }
+        if (IsEmpety())
+        {
+            var oldColor = transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.GetColor("_Color");
+            oldColor.a = 1;
+            transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", oldColor);
+        }
+        else
+        {
+            var oldColor = transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.GetColor("_Color");
+            oldColor.a = 0.3f;
+            transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", oldColor);
+        }
     }
+    private bool IsEmpety()
+    {
+        bool IsEmpety = true;
+        foreach (var item in Modules.S1.Equipped)
+        {
+            InputModule IModule = item.transform.GetChild(0).GetComponent<InputModule>();
+            for (int x = 0; x < IModule.size.x; x++)
+                for (int y = 0; y < IModule.size.y; y++)
+                {
+                    Vector2Int pos = IModule.gridPos + new Vector2Int(x, y);
+                    if (pos == position)
+                    {
+                        IsEmpety = false;
+                        return IsEmpety;
+                    }
+                }
+        }
+        return IsEmpety;
+    }
+
+
     public bool IsUnitedByType(InputModule module)
     {
         bool s = true;

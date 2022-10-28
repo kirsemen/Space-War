@@ -5,7 +5,6 @@ using UnityEngine;
 public class OutputGrid : MonoBehaviour
 {
     public List<OutputGridElement> grid = new List<OutputGridElement>();
-    public InputGrid IG;
     static public OutputGrid S1;
 
     public void Start()
