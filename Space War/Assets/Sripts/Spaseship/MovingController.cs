@@ -20,13 +20,11 @@ public class MovingController : MonoBehaviour
     public KeyCode keyUpSpeed = KeyCode.Q;
     public KeyCode keyDownSpeed = KeyCode.A;
 
-    private bool _keyChangeSpeedDown = false;
-    private bool _supportedSpeedIsO = false;
+    public  bool _keyChangeSpeedDown = false;
+    public bool _supportedSpeedIsO = false;
 
     void FixedUpdate()
     {
-
-
 
         if (speed < supportedSpeed)
             speed = (speed + acceleration > supportedSpeed) ? supportedSpeed : speed + acceleration;
@@ -81,7 +79,7 @@ public class MovingController : MonoBehaviour
             _keyChangeSpeedDown = false;
 
 
-        if (supportedSpeed > -SpeedChanging && supportedSpeed < SpeedChanging)
+        if (supportedSpeed > -acceleration && supportedSpeed < acceleration)
         {
             supportedSpeed = 0;
             _supportedSpeedIsO = true;
@@ -98,5 +96,16 @@ public class MovingController : MonoBehaviour
 
 
 
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.layer != 7) return;
+        transform.parent.GetComponent<SpaceshipController>().InSpacebaseTriger = true;
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer != 7) return;
+        transform.parent.GetComponent<SpaceshipController>().InSpacebaseTriger = false;
     }
 }

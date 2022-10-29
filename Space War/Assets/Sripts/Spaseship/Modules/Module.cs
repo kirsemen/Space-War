@@ -16,4 +16,8 @@ public class Module : MonoBehaviour
         else
             transform.parent.parent.GetComponent<Modules>().Equipped.Add(this);
     }
+    private void Update()
+    {
+        transform.GetChild(1).gameObject.SetActive(isEqiup);
+    }
 }

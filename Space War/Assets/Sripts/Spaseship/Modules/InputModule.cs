@@ -10,6 +10,14 @@ public class InputModule : MonoBehaviour
     public Vector2Int gridPos = new Vector2Int(-1, -1);
 
 
+    private void Update()
+    {
+        if (transform.GetChild(0).gameObject.layer == 9)
+            transform.GetChild(1).gameObject.SetActive(true);
+        else
+            transform.GetChild(1).gameObject.SetActive(false);
+    }
+
     public void SetPosByGrid()
     {
         if (gridPos.x != -1)

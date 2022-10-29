@@ -14,21 +14,24 @@ public class InputGridElement : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }
-        transform.GetChild(0).gameObject.SetActive(false);
-        transform.GetChild(1).gameObject.SetActive(true);
+
+        if (IsEmpety())
+        {
+            Color oldColor = transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.GetColor("_Color");
+            oldColor.a = 1;
+            transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", oldColor);
+        }
+        else
+        {
+            Color oldColor = transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.GetColor("_Color");
+            oldColor.a = 0.3f;
+            transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", oldColor);
+        }
 
         Module obj = Modules.S1.GetSelectedModule(9);
         if (obj != null)
         {
             InputModule module = obj.transform.GetChild(0).GetComponent<InputModule>();
-            if (module.gridPos.x != -1)
-                for (int i = 0; i < module.size.x; i++)
-                    for (int j = 0; j < module.size.y; j++)
-                        if ((module.gridPos.x + i) == position.x && (module.gridPos.y + j) == position.y)
-                        {
-                            transform.GetChild(0).gameObject.SetActive(true);
-                            transform.GetChild(1).gameObject.SetActive(false);
-                        }
 
 
             int[] indexs = obj.type.GetTypeIndex();
@@ -36,38 +39,23 @@ public class InputGridElement : MonoBehaviour
             foreach (var i in indexs)
                 newColor += InputGrid.S1.colorForTypes[i] / indexs.Length;
 
-            Color oldColor = transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.GetColor("_Color");
-            oldColor.r = newColor.r; oldColor.g = newColor.g; oldColor.b = newColor.b;
-            transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", oldColor);
             if (!IsUnitedByType(module))
             {
-                transform.GetChild(1).gameObject.SetActive(false);
                 newColor = new Color();
+                Color color = transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.GetColor("_Color");
+                color.a = 0.3f;
+                transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", color);
             }
-            oldColor = transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.GetColor("_Color");
+
+            Color oldColor = transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.GetColor("_Color");
             oldColor.r = newColor.r; oldColor.g = newColor.g; oldColor.b = newColor.b;
-            transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", oldColor);
+            transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", oldColor);
         }
         else
         {
-            Color oldColor = transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.GetColor("_Color");
+            Color oldColor = transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.GetColor("_Color");
             oldColor.r = 0; oldColor.g = 0; oldColor.b = 0;
-            transform.GetChild(1).gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", oldColor);
-            oldColor = transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.GetColor("_Color");
-            oldColor.r = 0; oldColor.g = 0; oldColor.b = 0;
-            transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", oldColor);
-        }
-        if (IsEmpety())
-        {
-            var oldColor = transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.GetColor("_Color");
-            oldColor.a = 1;
-            transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", oldColor);
-        }
-        else
-        {
-            var oldColor = transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.GetColor("_Color");
-            oldColor.a = 0.3f;
-            transform.GetChild(2).gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", oldColor);
+            transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", oldColor);
         }
     }
     private bool IsEmpety()

@@ -22,6 +22,7 @@ public class OutputModule : MonoBehaviour
         }
         if (OutputGrid.S1 != null)
         {
+            
             var element = OutputGrid.S1.Find(position);
             if (element != null)
             {
