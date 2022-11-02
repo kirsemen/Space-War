@@ -5,6 +5,12 @@ using UnityEngine;
 public class OutputModule : MonoBehaviour
 {
     public Vector2 position = new Vector2(-1, -1);
+     OutputGrid outputGrid;
+    private void Start()
+    {
+        outputGrid = transform.parent.parent.parent.GetComponent<Modules>().outputGrid;
+    }
+
     private void Update()
     {
         Vector2Int pos = transform.parent.GetChild(0).GetComponent<InputModule>().gridPos;
@@ -20,10 +26,10 @@ public class OutputModule : MonoBehaviour
             position.x = -1;
             position.y = -1;
         }
-        if (OutputGrid.S1 != null)
+        if (outputGrid != null)
         {
             
-            var element = OutputGrid.S1.Find(position);
+            var element = outputGrid.Find(position);
             if (element != null)
             {
                 transform.position = element.transform.position;

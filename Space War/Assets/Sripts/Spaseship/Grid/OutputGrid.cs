@@ -6,15 +6,12 @@ using UnityEngine;
 public class OutputGrid : MonoBehaviour
 {
     public List<OutputGridElement> grid = new List<OutputGridElement>();
-    static public OutputGrid S1;
 
     public void Start()
     {
-        S1 = this;
         foreach (Transform XBazier in transform.GetChild(0).GetChild(0))
             foreach (Transform YBazier in transform.GetChild(0).GetChild(1))
             {
-                //if (XBazier.GetComponent<Bezier>().position != 0.5f || YBazier.GetComponent<Bezier>().position != 0.5f) continue;
 
                 Vector2 A = new Vector2(XBazier.GetChild(0).localPosition.x, XBazier.GetChild(0).localPosition.z) + new Vector2(XBazier.localPosition.x, XBazier.localPosition.z);
                 Vector2 B = new Vector2(XBazier.GetChild(XBazier.childCount - 1).localPosition.x, XBazier.GetChild(XBazier.childCount - 1).localPosition.z) +

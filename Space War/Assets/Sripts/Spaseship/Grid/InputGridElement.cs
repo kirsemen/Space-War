@@ -2,13 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class InputGridElement : MonoBehaviour
 {
     public Vector2Int position = new Vector2Int(0, 0);
     public Modules.Type type = new Modules.Type();
+    Modules modules;
+    private void Start()
+    {
+        modules = transform.parent.GetComponent<InputGrid>().modules;
+    }
 
     private void Update()
     {
+        
+        if (modules.isBot)
+        {
+            gameObject.SetActive(false);
+        }
         if (type.GetTypeIndex().Length == 0)
         {
             gameObject.SetActive(false);
@@ -27,8 +38,8 @@ public class InputGridElement : MonoBehaviour
             oldColor.a = 0.3f;
             transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", oldColor);
         }
-
-        Module obj = Modules.S1.GetSelectedModule(9);
+        
+        Module obj = modules.GetSelectedModule(9);
         if (obj != null)
         {
             InputModule module = obj.transform.GetChild(0).GetComponent<InputModule>();
@@ -37,7 +48,7 @@ public class InputGridElement : MonoBehaviour
             int[] indexs = obj.type.GetTypeIndex();
             Color newColor = new Color();
             foreach (var i in indexs)
-                newColor += InputGrid.S1.colorForTypes[i] / indexs.Length;
+                newColor += transform.parent.GetComponent<InputGrid>().colorForTypes[i] / indexs.Length;
 
             if (!IsUnitedByType(module))
             {
@@ -61,7 +72,7 @@ public class InputGridElement : MonoBehaviour
     private bool IsEmpety()
     {
         bool IsEmpety = true;
-        foreach (var item in Modules.S1.Equipped)
+        foreach (var item in modules.Equipped)
         {
             InputModule IModule = item.transform.GetChild(0).GetComponent<InputModule>();
             for (int x = 0; x < IModule.size.x; x++)

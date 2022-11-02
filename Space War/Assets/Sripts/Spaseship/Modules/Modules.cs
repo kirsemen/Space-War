@@ -34,11 +34,11 @@ public class Modules : MonoBehaviour
 
     public List<Module> Equipped;
     public List<Module> Unequipped;
-    static public Modules S1;
-    private void Start()
-    {
-        S1 = this;
-    }
+    public bool isBot=false;
+    public InputGrid inputGrid;
+    public OutputGrid outputGrid;
+
+
     private void Update()
     {
         for (int i = 0; i < Equipped.Count; i++)
