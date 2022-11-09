@@ -9,7 +9,7 @@ public class OutCameraController : MonoBehaviour
 
 
     public float CameraSoftRotation = 0.03f;
-    public float MeshSoftRotation = 0.005f;
+    [Delayed] public float MeshSoftRotation = 0.005f;
 
     public KeyCode keyFreeRotation = KeyCode.LeftAlt;
 
@@ -61,17 +61,23 @@ public class OutCameraController : MonoBehaviour
             CameraAngle = CameraOldAngle;
         if (!Input.GetKey(keyFreeRotation))
         {
+            var deltaMeshAngle = (CameraAngle - _MeshCurentAngle);
+            float x = Mathf.Abs(deltaMeshAngle.x) < MeshSoftRotation ? deltaMeshAngle.x : MeshSoftRotation * (Mathf.Abs(deltaMeshAngle.x) / deltaMeshAngle.x);
+            float y = Mathf.Abs(deltaMeshAngle.y) < MeshSoftRotation ? deltaMeshAngle.y : MeshSoftRotation * (Mathf.Abs(deltaMeshAngle.y) / deltaMeshAngle.y);
 
-            var deltaMeshAngle = (CameraAngle - _MeshCurentAngle) * MeshSoftRotation;
-            _MeshCurentAngle += deltaMeshAngle;
-            Mesh.transform.rotation = Quaternion.Euler(deltaMeshAngle + _MeshCurentAngle);
+            
+            _MeshCurentAngle = Vector3.Lerp(_MeshCurentAngle, _MeshCurentAngle+new Vector3(x, y, 0),0.1f);
+            Mesh.transform.rotation = Quaternion.Euler(_MeshCurentAngle);
 
         }
         else
         {
-            var deltaMeshAngle = (CameraOldAngle - _MeshCurentAngle) * MeshSoftRotation;
-            _MeshCurentAngle += deltaMeshAngle;
-            Mesh.transform.rotation = Quaternion.Euler(deltaMeshAngle + _MeshCurentAngle);
+            var deltaMeshAngle = (CameraOldAngle - _MeshCurentAngle);
+            float x = Mathf.Abs(deltaMeshAngle.x) < MeshSoftRotation ? deltaMeshAngle.x : MeshSoftRotation * (Mathf.Abs(deltaMeshAngle.x) / deltaMeshAngle.x);
+            float y = Mathf.Abs(deltaMeshAngle.y) < MeshSoftRotation ? deltaMeshAngle.y : MeshSoftRotation * (Mathf.Abs(deltaMeshAngle.y) / deltaMeshAngle.y);
+
+            _MeshCurentAngle = Vector3.Lerp(_MeshCurentAngle, _MeshCurentAngle + new Vector3(x, y, 0), 0.1f);
+            Mesh.transform.rotation = Quaternion.Euler(_MeshCurentAngle);
         }
 
 

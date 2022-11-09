@@ -5,25 +5,68 @@ using UnityEngine;
 public class AI : MonoBehaviour
 {
     public GameObject target;
-    public float MeshSoftRotation = 0.005f;
+    [Delayed] public float MeshSoftRotation = 0.5f;
 
-    private void Start()
-    {
-        for (int i = 0; i < transform.GetChild(1).childCount; i++)
-        {
-            
-        }
+    public float MaxSpeed = 3f;
+    public float acceleration = 0.3f;
+    public float deceleration = 0.15f;
 
-    }
+
+    public float RadiusToTarget = 4;
+
+    public bool _supportedSpeedIsO = false;
+    public float Distance;
+
+
     private void Update()
+    {
+
+        var _MeshCurentAngle = transform.rotation.eulerAngles;
+        var targetAngle = Quaternion.LookRotation(target.transform.position - transform.position).eulerAngles;
+        var deltaMeshAngle = (Quaternion.Inverse(Quaternion.Euler(_MeshCurentAngle)) * Quaternion.Euler(targetAngle)).eulerAngles;
+        float x = deltaMeshAngle.x % 360 <= 180 ? deltaMeshAngle.x % 360 : -180 + deltaMeshAngle.x % 180;
+        float y = deltaMeshAngle.y % 360 <= 180 ? deltaMeshAngle.y % 360 : -180 + deltaMeshAngle.y % 180;
+
+        x = Mathf.Abs(x) < MeshSoftRotation ? x : MeshSoftRotation * (Mathf.Abs(x) / x);
+        y = Mathf.Abs(y) < MeshSoftRotation ? y : MeshSoftRotation * (Mathf.Abs(y) / y);
+
+        Vector3 eulerRotation = (transform.rotation * Quaternion.Euler(x, y, 0)).eulerAngles;
+        transform.rotation = Quaternion.Euler(eulerRotation.x, eulerRotation.y, 0);
+    }
+    private void FixedUpdate()
     {
         if (target != null)
         {
-            transform.GetChild(0).rotation = Quaternion.Lerp(transform.GetChild(0).rotation, 
-                Quaternion.LookRotation(target.transform.position - transform.GetChild(0).position),  
-                MeshSoftRotation);
-            Vector3 eulerRotation = transform.GetChild(0).rotation.eulerAngles;
-            transform.GetChild(0).rotation = Quaternion.Euler(eulerRotation.x, eulerRotation.y, 0);
+            var rb = GetComponent<Rigidbody>();
+
+            float k = 0.5f * Time.deltaTime;
+            rb.velocity = rb.velocity * (1 - k) + rb.velocity.magnitude * transform.forward * k;
+
+            Distance = Vector3.Distance(transform.position, target.transform.position);
+            if (RadiusToTarget < Distance)
+            {
+                _supportedSpeedIsO = false;
+                float R1 = Distance - Mathf.Pow((rb.velocity.magnitude) / (deceleration), 2) * (deceleration) / 2 - RadiusToTarget;
+                if (R1 > 0)
+                    rb.velocity += transform.forward * acceleration * Time.deltaTime;
+                else
+                    rb.velocity -= transform.forward * deceleration * Time.deltaTime;
+
+            }
+            else if (!_supportedSpeedIsO)
+                rb.velocity -= transform.forward * deceleration * Time.deltaTime;
+
+
+
+
+            if (rb.velocity.magnitude > -0.0001f && rb.velocity.magnitude < 0.0001f)
+            {
+                rb.velocity = Vector3.zero;
+                _supportedSpeedIsO = true;
+            }
+            if (rb.velocity.magnitude > MaxSpeed)
+                rb.velocity = transform.forward * MaxSpeed;
+
 
         }
     }

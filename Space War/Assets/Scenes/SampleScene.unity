@@ -325,7 +325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 65282306}
   - component: {fileID: 65282307}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -359,7 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0.2, y: 0, z: -0.00000058412553}
+  SecondBezierPoint: {x: 0.2, y: 0, z: -0.00000063180926}
 --- !u!1 &76499815
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +597,7 @@ GameObject:
   m_Component:
   - component: {fileID: 149571350}
   - component: {fileID: 149571351}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -631,7 +631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0.2, y: 0, z: 0}
+  SecondBezierPoint: {x: 0.2, y: 0, z: -0.000000047683717}
 --- !u!1 &154764483
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,7 +642,7 @@ GameObject:
   m_Component:
   - component: {fileID: 154764484}
   - component: {fileID: 154764485}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Bezier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -690,7 +690,7 @@ GameObject:
   m_Component:
   - component: {fileID: 167472225}
   - component: {fileID: 167472226}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -724,7 +724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0.2, y: 0, z: 0}
+  SecondBezierPoint: {x: 0.2, y: 0, z: -0.000000047683717}
 --- !u!1 &168995163
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,7 +866,7 @@ GameObject:
   m_Component:
   - component: {fileID: 180693563}
   - component: {fileID: 180693564}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Bezier (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1239,7 +1239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 261533257}
   - component: {fileID: 261533258}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Bezier (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1558,7 +1558,7 @@ GameObject:
   - component: {fileID: 324846182}
   - component: {fileID: 324846184}
   - component: {fileID: 324846183}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1821,7 +1821,7 @@ GameObject:
   m_Component:
   - component: {fileID: 336540593}
   - component: {fileID: 336540594}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1855,7 +1855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0.2, y: 0, z: 0}
+  SecondBezierPoint: {x: 0.2, y: 0, z: -0.000000047683717}
 --- !u!1 &337789958
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,7 +1866,7 @@ GameObject:
   m_Component:
   - component: {fileID: 337789959}
   - component: {fileID: 337789960}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1900,7 +1900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0, y: -0.000000023841858, z: -0.20000003}
+  SecondBezierPoint: {x: -0.000000047683717, y: -0.000000023841862, z: -0.20000003}
 --- !u!1 &345366333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1911,7 +1911,7 @@ GameObject:
   m_Component:
   - component: {fileID: 345366334}
   - component: {fileID: 345366335}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1945,7 +1945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0.2, y: 0, z: 0}
+  SecondBezierPoint: {x: 0.2, y: 0, z: -0.000000047683717}
 --- !u!21 &348861509
 Material:
   serializedVersion: 8
@@ -2341,7 +2341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 444928190}
   - component: {fileID: 444928191}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Bezier (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2437,7 +2437,7 @@ GameObject:
   m_Component:
   - component: {fileID: 473563076}
   - component: {fileID: 473563077}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Bezier (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3041,7 +3041,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Mesh: {fileID: 2009991445}
   CameraSoftRotation: 0.03
-  MeshSoftRotation: 0.01
+  MeshSoftRotation: 1
   keyFreeRotation: 308
   SpeedSizing: 0.1
   MinSize: 0.5
@@ -3235,7 +3235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 612076108}
   - component: {fileID: 612076109}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3269,7 +3269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0.2, y: 0, z: -0.00000058412553}
+  SecondBezierPoint: {x: 0.2, y: 0, z: -0.00000063180926}
 --- !u!21 &617028981
 Material:
   serializedVersion: 8
@@ -3638,7 +3638,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 652732131}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Y
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3775,7 +3775,7 @@ GameObject:
   m_Component:
   - component: {fileID: 690546673}
   - component: {fileID: 690546674}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3809,7 +3809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0.2, y: 0, z: -0.00000058412553}
+  SecondBezierPoint: {x: 0.2, y: 0, z: -0.00000063180926}
 --- !u!1 &697270301
 GameObject:
   m_ObjectHideFlags: 0
@@ -4398,7 +4398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 782574662}
   - component: {fileID: 782574663}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4432,7 +4432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0, y: 0.000000011920929, z: -0.2}
+  SecondBezierPoint: {x: -0.000000047683713, y: 0.0000000119209265, z: -0.2}
 --- !u!21 &789061413
 Material:
   serializedVersion: 8
@@ -4605,7 +4605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 818293459}
   - component: {fileID: 818293460}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4639,7 +4639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0.2, y: 0, z: 0}
+  SecondBezierPoint: {x: 0.2, y: 0, z: -0.000000047683717}
 --- !u!1 &826022664
 GameObject:
   m_ObjectHideFlags: 0
@@ -4698,7 +4698,7 @@ GameObject:
   m_Component:
   - component: {fileID: 829552184}
   - component: {fileID: 829552185}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4732,7 +4732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0.2, y: 0, z: -0.00000058412553}
+  SecondBezierPoint: {x: 0.2, y: 0, z: -0.00000063180926}
 --- !u!1 &834629269
 GameObject:
   m_ObjectHideFlags: 0
@@ -4743,7 +4743,7 @@ GameObject:
   m_Component:
   - component: {fileID: 834629270}
   - component: {fileID: 834629271}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4777,7 +4777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0, y: -0.000000023841858, z: -0.20000003}
+  SecondBezierPoint: {x: -0.000000047683717, y: -0.000000023841862, z: -0.20000003}
 --- !u!1 &847311398
 GameObject:
   m_ObjectHideFlags: 0
@@ -4787,7 +4787,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 847311399}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: X
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4969,7 +4969,7 @@ GameObject:
   m_Component:
   - component: {fileID: 877252491}
   - component: {fileID: 877252490}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5015,7 +5015,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 881099269}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BeziersLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5102,7 +5102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 887514029}
   - component: {fileID: 887514030}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Bezier (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5449,7 +5449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 959606062}
   - component: {fileID: 959606063}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5483,7 +5483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0.2, y: 0, z: 0}
+  SecondBezierPoint: {x: 0.2, y: 0, z: -0.000000047683717}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -5541,7 +5541,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2240
+    m_Bits: 6337
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -5671,7 +5671,7 @@ GameObject:
   m_Component:
   - component: {fileID: 995189230}
   - component: {fileID: 995189231}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5705,7 +5705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0.2, y: 0, z: 0}
+  SecondBezierPoint: {x: 0.2, y: 0, z: -0.000000047683717}
 --- !u!1 &1004471640
 GameObject:
   m_ObjectHideFlags: 0
@@ -5814,7 +5814,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1017181671}
   - component: {fileID: 1017181672}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5848,7 +5848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0.2, y: 0, z: -0.00000058412553}
+  SecondBezierPoint: {x: 0.2, y: 0, z: -0.00000063180926}
 --- !u!1 &1018272472
 GameObject:
   m_ObjectHideFlags: 0
@@ -6532,15 +6532,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Mesh: {fileID: 2009991445}
   supportedSpeed: 0
-  speed: 0
-  acceleration: 0.003
-  deceleration: 0.0015
-  SpeedChanging: 0.5
-  MaxSpeed: 1
-  MinSpeed: -1
+  MaxSpeed: 4
+  MinSpeed: 2
+  acceleration: 0.6
+  deceleration: 0.3
+  SpeedChanging: 2
   keyUpSpeed: 113
   keyDownSpeed: 97
-  _keyChangeSpeedDown: 0
   _supportedSpeedIsO: 0
 --- !u!135 &1047209666
 SphereCollider:
@@ -6553,7 +6551,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1047209667
 Rigidbody:
@@ -6772,7 +6770,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1067209801}
-  m_Layer: 6
+  - component: {fileID: 1067209804}
+  - component: {fileID: 1067209803}
+  - component: {fileID: 1067209802}
+  m_Layer: 12
   m_Name: OutputMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6786,7 +6787,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067209800}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.000000119209275, z: -0, w: 1}
   m_LocalPosition: {x: -7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6796,6 +6797,55 @@ Transform:
   m_Father: {fileID: 1148688875}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1067209802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067209800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0f533ca0f6625e41bffcdd6a4abd1da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1600132889}
+  MeshSoftRotation: 0.5
+  MaxSpeed: 3
+  acceleration: 0.5
+  deceleration: 0.25
+  RadiusToTarget: 20
+  _supportedSpeedIsO: 1
+  Distance: 0
+--- !u!135 &1067209803
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067209800}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1067209804
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067209800}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &1079036179
 GameObject:
   m_ObjectHideFlags: 0
@@ -6851,7 +6901,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1102623642}
   - component: {fileID: 1102623643}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Bezier (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7251,28 +7301,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1148688875}
-  - component: {fileID: 1148688874}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: SpaceshipBot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1148688874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148688873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0f533ca0f6625e41bffcdd6a4abd1da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1600132889}
-  MeshSoftRotation: 0.005
 --- !u!4 &1148688875
 Transform:
   m_ObjectHideFlags: 0
@@ -7843,7 +7878,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1225207256}
   - component: {fileID: 1225207257}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7877,7 +7912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0.2, y: 0, z: 0}
+  SecondBezierPoint: {x: 0.2, y: 0, z: -0.000000047683717}
 --- !u!1 &1232852775
 GameObject:
   m_ObjectHideFlags: 0
@@ -8190,7 +8225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1270991705}
   - component: {fileID: 1270991706}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8224,7 +8259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0.2, y: 0, z: 0}
+  SecondBezierPoint: {x: 0.2, y: 0, z: -0.000000047683717}
 --- !u!1 &1271454168
 GameObject:
   m_ObjectHideFlags: 0
@@ -8955,7 +8990,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1389990630}
   - component: {fileID: 1389990631}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Bezier (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9086,7 +9121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1407668444}
   - component: {fileID: 1407668445}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Bezier (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9610,7 +9645,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1504601023}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: GridElements
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9864,7 +9899,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1564024266}
   - component: {fileID: 1564024267}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9898,7 +9933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0.2, y: 0, z: -0.00000058412553}
+  SecondBezierPoint: {x: 0.2, y: 0, z: -0.00000063180926}
 --- !u!1 &1586592844
 GameObject:
   m_ObjectHideFlags: 0
@@ -10167,7 +10202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1600132889}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.42, y: -1.3818554, z: -0.059457686}
+  m_LocalPosition: {x: -6.37, y: 0, z: 51.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10265,7 +10300,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1642810680}
   - component: {fileID: 1642810681}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Bezier (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10358,7 +10393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1668704992}
   - component: {fileID: 1668704993}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10392,7 +10427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0.2, y: 0, z: -0.00000058412553}
+  SecondBezierPoint: {x: 0.2, y: 0, z: -0.00000063180926}
 --- !u!1 &1680410814
 GameObject:
   m_ObjectHideFlags: 0
@@ -10451,7 +10486,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1685596168}
   - component: {fileID: 1685596169}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10485,7 +10520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0, y: -0.000000023841858, z: -0.20000003}
+  SecondBezierPoint: {x: -0.000000047683717, y: -0.000000023841862, z: -0.20000003}
 --- !u!1 &1687604595
 GameObject:
   m_ObjectHideFlags: 0
@@ -10496,7 +10531,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1687604596}
   - component: {fileID: 1687604597}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10530,7 +10565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0.2, y: 0, z: -0.00000058412553}
+  SecondBezierPoint: {x: 0.2, y: 0, z: -0.00000063180926}
 --- !u!1 &1687989523
 GameObject:
   m_ObjectHideFlags: 0
@@ -10767,7 +10802,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1726732964}
   - component: {fileID: 1726732965}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10801,7 +10836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0, y: 0.000000011920929, z: -0.2}
+  SecondBezierPoint: {x: -0.000000047683713, y: 0.0000000119209265, z: -0.2}
 --- !u!1 &1749202267
 GameObject:
   m_ObjectHideFlags: 0
@@ -12356,7 +12391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2046716555}
   - component: {fileID: 2046716556}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12390,7 +12425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0.2, y: 0, z: 0}
+  SecondBezierPoint: {x: 0.2, y: 0, z: -0.000000047683717}
 --- !u!1 &2055295927
 GameObject:
   m_ObjectHideFlags: 0
@@ -12559,7 +12594,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2075515621}
   - component: {fileID: 2075515622}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Bezier (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12705,7 +12740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2087702469}
   - component: {fileID: 2087702470}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: BezierPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12739,7 +12774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c277979cdb1c444a765e216e726b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondBezierPoint: {x: 0, y: -0.000000023841858, z: -0.20000003}
+  SecondBezierPoint: {x: -0.000000047683717, y: -0.000000023841862, z: -0.20000003}
 --- !u!1 &2100367797
 GameObject:
   m_ObjectHideFlags: 0
@@ -12750,7 +12785,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2100367798}
   - component: {fileID: 2100367799}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Bezier (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
