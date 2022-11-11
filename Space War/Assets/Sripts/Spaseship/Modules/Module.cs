@@ -9,7 +9,7 @@ public class Module : MonoBehaviour
     public Modules.Type type = new Modules.Type();
 
 
-    private void Start()
+    private void Awake()
     {
         if (transform.GetChild(0).GetComponent<InputModule>().gridPos.x == -1)
             transform.parent.parent.GetComponent<Modules>().Unequipped.Add(this);

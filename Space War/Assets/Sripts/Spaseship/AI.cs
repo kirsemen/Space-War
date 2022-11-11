@@ -5,17 +5,13 @@ using UnityEngine;
 public class AI : MonoBehaviour
 {
     public GameObject target;
+    public Parametrs parametrs;
+
     [Delayed] public float MeshSoftRotation = 0.5f;
-
-    public float MaxSpeed = 3f;
-    public float acceleration = 0.3f;
-    public float deceleration = 0.15f;
-
 
     public float RadiusToTarget = 4;
 
     public bool _supportedSpeedIsO = false;
-    public float Distance;
 
 
     private void Update()
@@ -42,19 +38,19 @@ public class AI : MonoBehaviour
             float k = 0.5f * Time.deltaTime;
             rb.velocity = rb.velocity * (1 - k) + rb.velocity.magnitude * transform.forward * k;
 
-            Distance = Vector3.Distance(transform.position, target.transform.position);
+            var Distance = Vector3.Distance(transform.position, target.transform.position);
             if (RadiusToTarget < Distance)
             {
                 _supportedSpeedIsO = false;
-                float R1 = Distance - Mathf.Pow((rb.velocity.magnitude) / (deceleration), 2) * (deceleration) / 2 - RadiusToTarget;
+                float R1 = Distance - Mathf.Pow((rb.velocity.magnitude) / (parametrs.deceleration), 2) * (parametrs.deceleration) / 2 - RadiusToTarget;
                 if (R1 > 0)
-                    rb.velocity += transform.forward * acceleration * Time.deltaTime;
+                    rb.velocity += transform.forward * parametrs.acceleration * Time.deltaTime;
                 else
-                    rb.velocity -= transform.forward * deceleration * Time.deltaTime;
+                    rb.velocity -= transform.forward * parametrs.deceleration * Time.deltaTime;
 
             }
             else if (!_supportedSpeedIsO)
-                rb.velocity -= transform.forward * deceleration * Time.deltaTime;
+                rb.velocity -= transform.forward * parametrs.deceleration * Time.deltaTime;
 
 
 
@@ -64,8 +60,8 @@ public class AI : MonoBehaviour
                 rb.velocity = Vector3.zero;
                 _supportedSpeedIsO = true;
             }
-            if (rb.velocity.magnitude > MaxSpeed)
-                rb.velocity = transform.forward * MaxSpeed;
+            if (rb.velocity.magnitude > parametrs.MaxSpeed)
+                rb.velocity = transform.forward * parametrs.MaxSpeed;
 
 
         }

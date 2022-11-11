@@ -7,7 +7,7 @@ public class InputGrid : MonoBehaviour
 {
     public InputGridElement[,] grid;
     public Vector2Int maxSize = new Vector2Int();
-    public Color[] colorForTypes = new Color[4];
+    public Color[] colorForTypes = new Color[5];
     public Modules modules;
 
 

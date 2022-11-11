@@ -55,10 +55,9 @@ public class InputCameraController : MonoBehaviour
 
                 else
                     Q.transform.position = ray.direction * 9 + transform.GetChild(0).position;
-
-
             }
 
+            Q.modules.UpdateParametrs();
             if (Input.GetMouseButtonDown(0))
             {
                 

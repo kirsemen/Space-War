@@ -9,8 +9,7 @@ public class InputModule : MonoBehaviour
     public Vector2Int size = new Vector2Int(1, 1);
     public Vector3 margin = new Vector3(0, 0, 0);
     public Vector2Int gridPos = new Vector2Int(-1, -1);
-    private bool isBot = false;
-    Modules modules;
+    [HideInInspector] public Modules modules;
     InputGrid inputGrid;
 
     private void Start()
@@ -18,7 +17,6 @@ public class InputModule : MonoBehaviour
 
         modules = transform.parent.parent.parent.GetComponent<Modules>();
         inputGrid = transform.parent.parent.parent.GetComponent<Modules>().inputGrid;
-        isBot = modules.isBot;
         if (Application.IsPlaying(gameObject))
         {
             if (modules.isBot)
@@ -33,18 +31,13 @@ public class InputModule : MonoBehaviour
         {
             modules = transform.parent.parent.parent.GetComponent<Modules>();
             inputGrid = modules.inputGrid;
-            isBot = modules.isBot;
             try
             {
                 if (gridPos.x != -1 && gridPos.y != -1)
                     transform.position = inputGrid.grid[gridPos.y, gridPos.x].transform.position + margin;
-                
             }
-            catch (System.Exception)
-            {
+            catch (System.Exception) { }
 
-            }
-            
         }
         else
         {
@@ -52,7 +45,6 @@ public class InputModule : MonoBehaviour
                 transform.GetChild(1).gameObject.SetActive(true);
             else
                 transform.GetChild(1).gameObject.SetActive(false);
-
         }
     }
 
