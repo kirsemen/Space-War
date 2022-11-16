@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class AI : MonoBehaviour
 {
-    public GameObject target;
     public Parametrs parametrs;
-
-    [Delayed] public float MeshSoftRotation = 0.5f;
 
     public float RadiusToTarget = 4;
 
@@ -16,29 +13,33 @@ public class AI : MonoBehaviour
 
     private void Update()
     {
+        if (parametrs.rotationSpeed != 0)
+        {
+            var _MeshCurentAngle = transform.rotation.eulerAngles;
+            var targetAngle = Quaternion.LookRotation(parametrs.target.transform.position - transform.position).eulerAngles;
+            var deltaMeshAngle = (Quaternion.Inverse(Quaternion.Euler(_MeshCurentAngle)) * Quaternion.Euler(targetAngle)).eulerAngles;
 
-        var _MeshCurentAngle = transform.rotation.eulerAngles;
-        var targetAngle = Quaternion.LookRotation(target.transform.position - transform.position).eulerAngles;
-        var deltaMeshAngle = (Quaternion.Inverse(Quaternion.Euler(_MeshCurentAngle)) * Quaternion.Euler(targetAngle)).eulerAngles;
-        float x = deltaMeshAngle.x % 360 <= 180 ? deltaMeshAngle.x % 360 : -180 + deltaMeshAngle.x % 180;
-        float y = deltaMeshAngle.y % 360 <= 180 ? deltaMeshAngle.y % 360 : -180 + deltaMeshAngle.y % 180;
+            float x = deltaMeshAngle.x % 360 <= 180 ? deltaMeshAngle.x % 360 : -180 + deltaMeshAngle.x % 180;
+            float y = deltaMeshAngle.y % 360 <= 180 ? deltaMeshAngle.y % 360 : -180 + deltaMeshAngle.y % 180;
 
-        x = Mathf.Abs(x) < MeshSoftRotation ? x : MeshSoftRotation * (Mathf.Abs(x) / x);
-        y = Mathf.Abs(y) < MeshSoftRotation ? y : MeshSoftRotation * (Mathf.Abs(y) / y);
+            x = Mathf.Abs(x) < parametrs.rotationSpeed ? x : parametrs.rotationSpeed * (Mathf.Abs(x) / x);
+            y = Mathf.Abs(y) < parametrs.rotationSpeed ? y : parametrs.rotationSpeed * (Mathf.Abs(y) / y);
 
-        Vector3 eulerRotation = (transform.rotation * Quaternion.Euler(x, y, 0)).eulerAngles;
-        transform.rotation = Quaternion.Euler(eulerRotation.x, eulerRotation.y, 0);
+            Vector3 eulerRotation = (transform.rotation * Quaternion.Euler(x, y, 0)).eulerAngles;
+            transform.rotation = Quaternion.Euler(eulerRotation.x, eulerRotation.y, 0);
+
+        }
     }
     private void FixedUpdate()
     {
-        if (target != null)
+        if (parametrs.target != null)
         {
             var rb = GetComponent<Rigidbody>();
 
             float k = 0.5f * Time.deltaTime;
             rb.velocity = rb.velocity * (1 - k) + rb.velocity.magnitude * transform.forward * k;
 
-            var Distance = Vector3.Distance(transform.position, target.transform.position);
+            var Distance = Vector3.Distance(transform.position, parametrs.target.transform.position);
             if (RadiusToTarget < Distance)
             {
                 _supportedSpeedIsO = false;

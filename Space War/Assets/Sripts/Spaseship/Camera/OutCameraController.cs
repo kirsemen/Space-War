@@ -6,10 +6,9 @@ public class OutCameraController : MonoBehaviour
 {
 
     public GameObject Mesh;
-
+    public Parametrs parametrs;
 
     public float CameraSoftRotation = 0.03f;
-    [Delayed] public float MeshSoftRotation = 0.005f;
 
     public KeyCode keyFreeRotation = KeyCode.LeftAlt;
 
@@ -59,26 +58,23 @@ public class OutCameraController : MonoBehaviour
             CameraOldAngle=CameraAngle;
         if (Input.GetKeyUp(keyFreeRotation))
             CameraAngle = CameraOldAngle;
-        if (!Input.GetKey(keyFreeRotation))
-        {
-            var deltaMeshAngle = (CameraAngle - _MeshCurentAngle);
-            float x = Mathf.Abs(deltaMeshAngle.x) < MeshSoftRotation ? deltaMeshAngle.x : MeshSoftRotation * (Mathf.Abs(deltaMeshAngle.x) / deltaMeshAngle.x);
-            float y = Mathf.Abs(deltaMeshAngle.y) < MeshSoftRotation ? deltaMeshAngle.y : MeshSoftRotation * (Mathf.Abs(deltaMeshAngle.y) / deltaMeshAngle.y);
 
-            
-            _MeshCurentAngle = Vector3.Lerp(_MeshCurentAngle, _MeshCurentAngle+new Vector3(x, y, 0),0.1f);
-            Mesh.transform.rotation = Quaternion.Euler(_MeshCurentAngle);
-
-        }
-        else
+        if (parametrs.rotationSpeed != 0)
         {
-            var deltaMeshAngle = (CameraOldAngle - _MeshCurentAngle);
-            float x = Mathf.Abs(deltaMeshAngle.x) < MeshSoftRotation ? deltaMeshAngle.x : MeshSoftRotation * (Mathf.Abs(deltaMeshAngle.x) / deltaMeshAngle.x);
-            float y = Mathf.Abs(deltaMeshAngle.y) < MeshSoftRotation ? deltaMeshAngle.y : MeshSoftRotation * (Mathf.Abs(deltaMeshAngle.y) / deltaMeshAngle.y);
+            Vector3 deltaMeshAngle;
+            if (!Input.GetKey(keyFreeRotation))
+                deltaMeshAngle = (CameraAngle - _MeshCurentAngle);
+            else
+                deltaMeshAngle = (CameraOldAngle - _MeshCurentAngle);
+
+
+            float x = Mathf.Abs(deltaMeshAngle.x) < parametrs.rotationSpeed ? deltaMeshAngle.x : parametrs.rotationSpeed * (Mathf.Abs(deltaMeshAngle.x) / deltaMeshAngle.x);
+            float y = Mathf.Abs(deltaMeshAngle.y) < parametrs.rotationSpeed ? deltaMeshAngle.y : parametrs.rotationSpeed * (Mathf.Abs(deltaMeshAngle.y) / deltaMeshAngle.y);
 
             _MeshCurentAngle = Vector3.Lerp(_MeshCurentAngle, _MeshCurentAngle + new Vector3(x, y, 0), 0.1f);
             Mesh.transform.rotation = Quaternion.Euler(_MeshCurentAngle);
         }
+        
 
 
 

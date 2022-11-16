@@ -9,4 +9,6 @@ public class Engine : DefaultType
 
     public float acceleration = 0;
     public float deceleration = 0;
+
+    public float rotationSpeed = 1;
 }

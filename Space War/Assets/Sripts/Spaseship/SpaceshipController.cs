@@ -21,6 +21,9 @@ public class SpaceshipController : MonoBehaviour
     }
     private void Update()
     {
+        if (GetComponent<Parametrs>().usingEnergy > GetComponent<Parametrs>().energy)
+            return;
+
         if(InSpacebaseTriger&& Input.GetKeyDown(keyToOnEditing))
             Editing = !Editing;
         else if(!InSpacebaseTriger)

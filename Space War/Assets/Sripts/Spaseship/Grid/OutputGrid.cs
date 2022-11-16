@@ -30,7 +30,7 @@ public class OutputGrid : MonoBehaviour
 
                     Vector3 XYDerivative = Bezier.GetDerivativeByXPosition(YBazier.GetComponent<Bezier>(), Bezier.GetLinesCrossVector(A, B, C, D).x);
                     Vector3 YZDerivative = Bezier.GetDerivativeByZPosition(XBazier.GetComponent<Bezier>(), Bezier.GetLinesCrossVector(A, B, C, D).y);
-                    go.transform.rotation = ((Quaternion.LookRotation(XYDerivative) * Quaternion.Euler(0, -90, 0)) * Quaternion.LookRotation(YZDerivative));
+                    go.transform.rotation = ((Quaternion.LookRotation(XYDerivative) * Quaternion.Euler(0, -90, 0)) * Quaternion.LookRotation(YZDerivative)) * Quaternion.Euler(0, 180, 0);
 
                     grid.Add(go.GetComponent<OutputGridElement>());
                 }

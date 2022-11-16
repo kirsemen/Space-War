@@ -59,6 +59,11 @@ public class MovingController : MonoBehaviour
             else if (Mathf.Abs(supportedSpeed) < rb.velocity.magnitude)
                 rb.velocity += Mesh.transform.forward * parametrs.acceleration * Time.deltaTime;
         }
+        else
+        {
+            float k = 0.5f * Time.deltaTime;
+            rb.velocity = rb.velocity * (1 - k);
+        }
 
         if (supportedSpeed > -0.0001f && supportedSpeed < 0.0001f)
         {
