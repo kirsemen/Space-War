@@ -1,16 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.EditorTools;
 using UnityEngine;
 
 [ExecuteAlways]
 public class InputGrid : MonoBehaviour
 {
     public InputGridElement[,] grid;
-    public Vector2Int maxSize = new Vector2Int();
+    public Vector2Int maxSize = new Vector2Int(2,5);
     public Color[] colorForTypes = new Color[5];
     public Modules modules;
 
+    [InspectorButton("OnButtonClicked")]
+    public bool clickMe;
 
+    private void OnButtonClicked()
+    {
+        var child = transform.GetChild(0);
+        if (Application.isEditor)
+            Object.DestroyImmediate(child);
+        else
+            Object.Destroy(child);
+    }
     public void Start()
     {
         for (int i = 0; i < transform.childCount; i++)

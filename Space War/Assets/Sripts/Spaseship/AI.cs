@@ -8,15 +8,31 @@ public class AI : MonoBehaviour
 
     public float RadiusToTarget = 4;
 
-    public bool _supportedSpeedIsO = false;
-
+    public Parametrs[] targets = new Parametrs[1];
 
     private void Update()
     {
+        if (parametrs.target == null)
+        {
+
+            Parametrs nowTorget = targets[0];
+            float distance = Vector3.Distance(transform.position, nowTorget.transform.GetChild(0).position);
+            for (int i = 1; i < targets.Length; i++)
+            {
+                float newDistance = Vector3.Distance(transform.position, targets[i].transform.GetChild(0).position);
+                if (distance < newDistance)
+                {
+                    distance = newDistance;
+                    nowTorget = targets[i];
+                }
+            }
+            parametrs.target = nowTorget;
+        }
+
         if (parametrs.rotationSpeed != 0)
         {
             var _MeshCurentAngle = transform.rotation.eulerAngles;
-            var targetAngle = Quaternion.LookRotation(parametrs.target.transform.position - transform.position).eulerAngles;
+            var targetAngle = Quaternion.LookRotation(parametrs.target.transform.GetChild(0).position - transform.position).eulerAngles;
             var deltaMeshAngle = (Quaternion.Inverse(Quaternion.Euler(_MeshCurentAngle)) * Quaternion.Euler(targetAngle)).eulerAngles;
 
             float x = deltaMeshAngle.x % 360 <= 180 ? deltaMeshAngle.x % 360 : -180 + deltaMeshAngle.x % 180;
@@ -36,13 +52,13 @@ public class AI : MonoBehaviour
         {
             var rb = GetComponent<Rigidbody>();
 
-            float k = 0.5f * Time.deltaTime;
-            rb.velocity = rb.velocity * (1 - k) + rb.velocity.magnitude * transform.forward * k;
 
-            var Distance = Vector3.Distance(transform.position, parametrs.target.transform.position);
+            var Distance = Vector3.Distance(transform.position, parametrs.target.transform.GetChild(0).position);
             if (RadiusToTarget < Distance)
             {
-                _supportedSpeedIsO = false;
+                float k = 0.5f * Time.deltaTime;
+                rb.velocity = rb.velocity * (1 - k) + rb.velocity.magnitude * transform.forward * k;
+
                 float R1 = Distance - Mathf.Pow((rb.velocity.magnitude) / (parametrs.deceleration), 2) * (parametrs.deceleration) / 2 - RadiusToTarget;
                 if (R1 > 0)
                     rb.velocity += transform.forward * parametrs.acceleration * Time.deltaTime;
@@ -50,17 +66,18 @@ public class AI : MonoBehaviour
                     rb.velocity -= transform.forward * parametrs.deceleration * Time.deltaTime;
 
             }
-            else if (!_supportedSpeedIsO)
-                rb.velocity -= transform.forward * parametrs.deceleration * Time.deltaTime;
-
-
-
-
-            if (rb.velocity.magnitude > -0.0001f && rb.velocity.magnitude < 0.0001f)
+            else
             {
-                rb.velocity = Vector3.zero;
-                _supportedSpeedIsO = true;
+                float k = 0.5f * Time.deltaTime;
+                rb.velocity = rb.velocity * (1 - k) - rb.velocity.magnitude * transform.forward * k;
+
+                float R1 = Distance + Mathf.Pow((rb.velocity.magnitude) / (parametrs.acceleration), 2) * (parametrs.acceleration) / 2 - RadiusToTarget;
+                if (R1 > 0)
+                    rb.velocity += transform.forward * parametrs.acceleration * Time.deltaTime;
+                else
+                    rb.velocity -= transform.forward * parametrs.deceleration * Time.deltaTime;
             }
+
             if (rb.velocity.magnitude > parametrs.MaxSpeed)
                 rb.velocity = transform.forward * parametrs.MaxSpeed;
 

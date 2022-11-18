@@ -30,15 +30,13 @@ public class SpaceshipController : MonoBehaviour
             Editing = false;
         if (Editing)
         {
-            OutputSpaceship.SetActive(false);
-            InputSpaceship.SetActive(true);
-
+            OutputSpaceship.SetActive(true);
+            InputSpaceship.SetActive(false);
         }
         else
         {
-            OutputSpaceship.SetActive(true);
-            InputSpaceship.SetActive(false);
-
+            OutputSpaceship.SetActive(false);
+            InputSpaceship.SetActive(true);
         }
     }
     

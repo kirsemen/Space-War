@@ -32,7 +32,7 @@ public class Weaponry : DefaultType
         if (parametrs.target != null)
         {
             LookAtTarget();
-            if (Vector3.Distance(parametrs.transform.position, parametrs.target.transform.position) <= distance && Time.realtimeSinceStartup - _delay >= delay)
+            if (Vector3.Distance(parametrs.transform.position, parametrs.target.transform.GetChild(0).position) <= distance && Time.realtimeSinceStartup - _delay >= delay)
             {
                 Shoot();
                 _delay = Time.realtimeSinceStartup;
@@ -49,7 +49,7 @@ public class Weaponry : DefaultType
     public void LookAtTarget()
     {
         var _MeshCurentAngle = transform.GetChild(1).GetChild(0).rotation.eulerAngles;
-        var targetAngle = Quaternion.LookRotation(parametrs.target.transform.position - transform.GetChild(1).GetChild(0).position).eulerAngles;
+        var targetAngle = Quaternion.LookRotation(parametrs.target.transform.GetChild(0).position - transform.GetChild(1).GetChild(0).position).eulerAngles;
         var deltaMeshAngle = (Quaternion.Inverse(Quaternion.Euler(_MeshCurentAngle)) * Quaternion.Euler(targetAngle)).eulerAngles;
 
         float x = deltaMeshAngle.x % 360 <= 180 ? deltaMeshAngle.x % 360 : -180 + deltaMeshAngle.x % 180;
