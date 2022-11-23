@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [ExecuteAlways]
@@ -41,7 +42,7 @@ public class InputModule : MonoBehaviour
         }
         else
         {
-            if (transform.GetChild(0).gameObject.layer == 9)
+            if (transform.parent.GetComponent<Module>() == modules.GetSelectedModule())
                 transform.GetChild(1).gameObject.SetActive(true);
             else
                 transform.GetChild(1).gameObject.SetActive(false);

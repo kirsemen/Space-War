@@ -35,13 +35,13 @@ public class OutCameraController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = new Ray(transform.GetChild(0).position, transform.GetChild(0).forward);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100, EnemyMasks))
+            if (Physics.Raycast(ray, out hit, float.MaxValue, EnemyMasks))
             {
-                Debug.Log(hit.collider.transform.parent.name);
+                parametrs.target= hit.collider.transform.parent.GetComponent<Parametrs>();
             }
-
+             
             }
 
         if (Input.GetMouseButtonDown(1))

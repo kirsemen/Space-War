@@ -75,8 +75,14 @@ public class Modules : MonoBehaviour
     }
 
 
-    public Module GetSelectedModule(int layer)
+    public Module GetSelectedModule()
     {
+        int layer;
+        if (gameObject.layer == 8)//------------------
+            layer = 9;//------------------
+        else
+            layer = -1;//------------------
+
         foreach (var item in Equipped)
         {
             if (item.transform.GetChild(0).GetChild(0).gameObject.layer == layer)

@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.EditorTools;
-using UnityEditor.Search;
-using UnityEditor.SearchService;
+using UnityEditor;
 using UnityEngine;
 
 [ExecuteAlways]
@@ -31,7 +29,8 @@ public class InputGrid : MonoBehaviour
         for (int x = 0; x < maxSize.x; x++)
             for (int y = 0; y < maxSize.y; y++)
             {
-                GameObject go = Instantiate(Prefab, transform);
+                GameObject go = PrefabUtility.InstantiatePrefab(Prefab) as GameObject;
+                go.transform.parent = transform;
                 go.GetComponent<InputGridElement>().position=new Vector2Int(x,y);
                 go.transform.localPosition = new Vector3(x, -0.49f, -y);
                 go.name = "x: " + x + ", y:" + y;

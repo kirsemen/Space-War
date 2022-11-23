@@ -16,22 +16,22 @@ public class AI : MonoBehaviour
         if (parametrs.target == null)
         {
             GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
-            Parametrs nowTorget=null;
+            Parametrs nowTarget=null;
             float distance=float.MaxValue;
             foreach (GameObject go in allObjects)
             {
-                if (((1 << go.layer) & EnemyMasks) != 0 && go!=gameObject/* && go.transform.parent.GetComponent<Parametrs>()!=null*/)
+                Parametrs newTarget;
+                if (((1 << go.layer) & EnemyMasks) != 0 && go!=gameObject.transform.parent.gameObject && go.transform.TryGetComponent(out newTarget))
                 {
-                    Debug.Log(go.transform.parent.name);
-                    float newDistance = Vector3.Distance(transform.position, go.transform.position);
-                    if (distance < newDistance)
+                    float newDistance = Vector3.Distance(transform.position, go.transform.GetChild(0).position);
+                    if (distance > newDistance)
                     {
                         distance = newDistance;
-                        nowTorget = go.transform.parent.GetComponent<Parametrs>();
+                        nowTarget = newTarget;
                     }
                 }
             }
-            parametrs.target = nowTorget;
+            parametrs.target = nowTarget;
         }
 
         if (parametrs.rotationSpeed != 0 && parametrs.target != null)

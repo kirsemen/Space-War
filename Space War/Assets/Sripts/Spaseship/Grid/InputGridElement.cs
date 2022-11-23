@@ -39,7 +39,7 @@ public class InputGridElement : MonoBehaviour
             transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.SetColor("_Color", oldColor);
         }
         
-        Module obj = modules.GetSelectedModule(9);
+        Module obj = modules.GetSelectedModule();
         if (obj != null)
         {
             InputModule module = obj.transform.GetChild(0).GetComponent<InputModule>();

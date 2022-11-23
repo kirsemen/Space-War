@@ -61,8 +61,8 @@ public class MovingController : MonoBehaviour
         }
         else
         {
-            float k = 0.5f * Time.deltaTime;
-            rb.velocity = rb.velocity * (1 - k);
+            if(rb.velocity.magnitude!=0)
+                rb.velocity -= rb.velocity.normalized * parametrs.acceleration * Time.deltaTime;
         }
 
         if (supportedSpeed > -0.0001f && supportedSpeed < 0.0001f)
@@ -78,10 +78,6 @@ public class MovingController : MonoBehaviour
         else if (supportedSpeed > parametrs.MaxSpeed)
             supportedSpeed = parametrs.MaxSpeed;
 
-        if (rb.velocity.magnitude > supportedSpeed && supportedSpeed > 0)
-            rb.velocity = Mesh.transform.forward * supportedSpeed;
-        else if (rb.velocity.magnitude < supportedSpeed && supportedSpeed < 0)
-            rb.velocity = -Mesh.transform.forward * supportedSpeed;
     }
 
     private void OnTriggerStay(Collider other)

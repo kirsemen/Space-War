@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngineInternal;
 
@@ -17,6 +18,9 @@ public class InputCameraController : MonoBehaviour
     public float MinSize = 0.5f;
     public float MaxSize = 100;
     public float SizeSoftSizing = 0.01f;
+    
+    public LayerMask gridLayer;
+    public LayerMask ModuleLayer;
 
 
     private Vector2 _mousePosition = new Vector2(0, 0);
@@ -34,9 +38,8 @@ public class InputCameraController : MonoBehaviour
         if (Q != null)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            int a = (1 << 10);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100, a))
+            if (Physics.Raycast(ray, out hit, 100, gridLayer))
             {
                 var G = hit.collider.gameObject.transform.parent;
                 Q.transform.position = ray.direction * hit.distance * 0.7f + transform.GetChild(0).position;
@@ -48,9 +51,8 @@ public class InputCameraController : MonoBehaviour
                 Q.gridPos.y = -1;
 
                 Ray ray1 = Camera.main.ScreenPointToRay(Input.mousePosition);
-                int a1 = (1 << 8);
                 RaycastHit hit1;
-                if (Physics.Raycast(ray1, out hit1, 100, a1))
+                if (Physics.Raycast(ray1, out hit1, 100, ModuleLayer))
                     Q.transform.position = ray1.direction * hit1.distance * 0.7f + transform.GetChild(0).position;
 
                 else
@@ -60,9 +62,8 @@ public class InputCameraController : MonoBehaviour
             Q.modules.UpdateParametrs();
             if (Input.GetMouseButtonDown(0))
             {
-                
-                Q.transform.GetChild(0).gameObject.layer = 8;
-                
+                Q.transform.GetChild(0).gameObject.layer = 8;//------------------
+
                 Q = null;
             }
         }
@@ -71,12 +72,12 @@ public class InputCameraController : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                int a = 1 << 8;
+                int a = 1 << 8;//------------------
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, 100, a))
                 {
                     Q = hit.collider.transform.parent.GetComponent<InputModule>();
-                    Q.transform.GetChild(0).gameObject.layer = 9;
+                    Q.transform.GetChild(0).gameObject.layer = 9;//------------------
                 }
 
             }
