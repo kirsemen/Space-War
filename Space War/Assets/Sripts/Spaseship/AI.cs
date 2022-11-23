@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AI : MonoBehaviour
@@ -8,28 +9,32 @@ public class AI : MonoBehaviour
 
     public float RadiusToTarget = 4;
 
-    public Parametrs[] targets = new Parametrs[1];
+    public LayerMask EnemyMasks;
 
     private void Update()
     {
         if (parametrs.target == null)
         {
-
-            Parametrs nowTorget = targets[0];
-            float distance = Vector3.Distance(transform.position, nowTorget.transform.GetChild(0).position);
-            for (int i = 1; i < targets.Length; i++)
+            GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
+            Parametrs nowTorget=null;
+            float distance=float.MaxValue;
+            foreach (GameObject go in allObjects)
             {
-                float newDistance = Vector3.Distance(transform.position, targets[i].transform.GetChild(0).position);
-                if (distance < newDistance)
+                if (((1 << go.layer) & EnemyMasks) != 0 && go!=gameObject/* && go.transform.parent.GetComponent<Parametrs>()!=null*/)
                 {
-                    distance = newDistance;
-                    nowTorget = targets[i];
+                    Debug.Log(go.transform.parent.name);
+                    float newDistance = Vector3.Distance(transform.position, go.transform.position);
+                    if (distance < newDistance)
+                    {
+                        distance = newDistance;
+                        nowTorget = go.transform.parent.GetComponent<Parametrs>();
+                    }
                 }
             }
             parametrs.target = nowTorget;
         }
 
-        if (parametrs.rotationSpeed != 0)
+        if (parametrs.rotationSpeed != 0 && parametrs.target != null)
         {
             var _MeshCurentAngle = transform.rotation.eulerAngles;
             var targetAngle = Quaternion.LookRotation(parametrs.target.transform.GetChild(0).position - transform.position).eulerAngles;

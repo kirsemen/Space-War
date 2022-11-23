@@ -32,7 +32,7 @@ public class Weaponry : DefaultType
         if (parametrs.target != null)
         {
             LookAtTarget();
-            if (Vector3.Distance(parametrs.transform.position, parametrs.target.transform.GetChild(0).position) <= distance && Time.realtimeSinceStartup - _delay >= delay)
+            if (Vector3.Distance(parametrs.transform.GetChild(0).position, parametrs.target.transform.GetChild(0).position) <= distance && Time.realtimeSinceStartup - _delay >= delay)
             {
                 Shoot();
                 _delay = Time.realtimeSinceStartup;

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.EditorTools;
+using UnityEditor.Search;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 [ExecuteAlways]
@@ -11,16 +13,31 @@ public class InputGrid : MonoBehaviour
     public Color[] colorForTypes = new Color[5];
     public Modules modules;
 
+
     [InspectorButton("OnButtonClicked")]
-    public bool clickMe;
+    public bool Generate;
+    public GameObject Prefab;
 
     private void OnButtonClicked()
     {
-        var child = transform.GetChild(0);
-        if (Application.isEditor)
-            Object.DestroyImmediate(child);
-        else
-            Object.Destroy(child);
+        int i = 0;
+        while (i < 100)
+        {
+            if (transform.childCount == 0)
+                break;
+            Object.DestroyImmediate(transform.GetChild(0).gameObject);
+            i++;
+        }
+        for (int x = 0; x < maxSize.x; x++)
+            for (int y = 0; y < maxSize.y; y++)
+            {
+                GameObject go = Instantiate(Prefab, transform);
+                go.GetComponent<InputGridElement>().position=new Vector2Int(x,y);
+                go.transform.localPosition = new Vector3(x, -0.49f, -y);
+                go.name = "x: " + x + ", y:" + y;
+            }
+
+        
     }
     public void Start()
     {
@@ -39,7 +56,7 @@ public class InputGrid : MonoBehaviour
     }
     private void Update()
     {
-        if (!Application.IsPlaying(gameObject))
+        if (!Application.IsPlaying(gameObject)|| maxSize.x!=0)
         {
             for (int i = 0; i < transform.childCount; i++)
             {

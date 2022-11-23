@@ -20,7 +20,7 @@ public class OutCameraController : MonoBehaviour
     public float MaxSize = 100;
     public float SizeSoftSizing = 0.01f;
 
-
+    public LayerMask EnemyMasks;
 
     private Vector2 _mousePosition = new Vector2(0, 0);
     private bool _mouseIsDown = false;
@@ -30,17 +30,28 @@ public class OutCameraController : MonoBehaviour
     private Vector3 _CameraCurentAngle = new Vector3(0, 0, 0);
     private Vector3 _MeshCurentAngle = new Vector3(0, 0, 0);
     
+    
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100, EnemyMasks))
+            {
+                Debug.Log(hit.collider.transform.parent.name);
+            }
+
+            }
+
         if (Input.GetMouseButtonDown(1))
         {
             _mouseIsDown = true;
             _mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         }
         if (Input.GetMouseButtonUp(1))
-        {
             _mouseIsDown = false;
-        }
+
         if (_mouseIsDown)
         {
             Vector2 mouseDelta = _mousePosition - new Vector2(Input.mousePosition.x, Input.mousePosition.y);
