@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8707099672282079982}
   - component: {fileID: 8707099672282079980}
   - component: {fileID: 8707099672282079983}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8707099672610369950}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8707099672796358988}
   - component: {fileID: 8707099672796358989}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 8707099673005439206}
   - component: {fileID: 8707099673005439204}
   - component: {fileID: 8707099673005439207}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 8707099673089266575}
   - component: {fileID: 8707099673089266573}
   - component: {fileID: 8707099673089266572}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Weaponry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 8707099673320668792}
   - component: {fileID: 8707099673320668790}
   - component: {fileID: 8707099673320668793}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 8707099673422533171}
   - component: {fileID: 8707099673422533169}
   - component: {fileID: 8707099673422533168}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -490,7 +490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8707099673599823808}
   - component: {fileID: 8707099673599823809}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Output
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -536,7 +536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8707099674165827817}
   - component: {fileID: 8707099674165827814}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}

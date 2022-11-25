@@ -29,8 +29,8 @@ public class OutCameraController : MonoBehaviour
     private Vector3 CameraOldAngle = new Vector3(0, 0, 0);
     private Vector3 _CameraCurentAngle = new Vector3(0, 0, 0);
     private Vector3 _MeshCurentAngle = new Vector3(0, 0, 0);
-    
-    
+
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -39,10 +39,10 @@ public class OutCameraController : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, float.MaxValue, EnemyMasks))
             {
-                parametrs.target= hit.collider.transform.parent.GetComponent<Parametrs>();
+                parametrs.target = hit.collider.transform.parent.GetComponent<Parametrs>();
             }
-             
-            }
+
+        }
 
         if (Input.GetMouseButtonDown(1))
         {
@@ -66,7 +66,7 @@ public class OutCameraController : MonoBehaviour
         _CameraCurentAngle += deltaCamAngle;
         transform.rotation = Quaternion.Euler(deltaCamAngle + _CameraCurentAngle);
         if (Input.GetKeyDown(keyFreeRotation))
-            CameraOldAngle=CameraAngle;
+            CameraOldAngle = CameraAngle;
         if (Input.GetKeyUp(keyFreeRotation))
             CameraAngle = CameraOldAngle;
 
@@ -85,7 +85,7 @@ public class OutCameraController : MonoBehaviour
             _MeshCurentAngle = Vector3.Lerp(_MeshCurentAngle, _MeshCurentAngle + new Vector3(x, y, 0), 0.1f);
             Mesh.transform.rotation = Quaternion.Euler(_MeshCurentAngle);
         }
-        
+
 
 
 

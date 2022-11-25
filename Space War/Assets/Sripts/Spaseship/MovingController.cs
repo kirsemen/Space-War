@@ -82,12 +82,12 @@ public class MovingController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.layer != 7) return;
+        if (other.gameObject.layer != (int)Mathf.Log(transform.parent.GetComponent<SpaceshipController>().SpasebaseLayer, 2)) return;
         transform.parent.GetComponent<SpaceshipController>().InSpacebaseTriger = true;
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer != 7) return;
+        if (other.gameObject.layer != (int)Mathf.Log(transform.parent.GetComponent<SpaceshipController>().SpasebaseLayer, 2)) return;
         transform.parent.GetComponent<SpaceshipController>().InSpacebaseTriger = false;
     }
 }

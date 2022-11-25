@@ -8,19 +8,19 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - NETWORK MANAGER
   - Water
   - UI
-  - Spaceship1
-  - Spacebase1
-  - Module1
-  - SelectedModule1
-  - Grid1
-  - OutputModule1
-  - Bot1
-  - 
-  - 
-  - 
+  - SpaceshipTeam1
+  - SpacebaseTeam1
+  - BotTeam1
+  - Grid
+  - Module
+  - SelectedModule
+  - OutputModule
+  - SpaceshipTeam2
+  - SpacebaseTeam2
+  - BotTeam2
   - 
   - 
   - 

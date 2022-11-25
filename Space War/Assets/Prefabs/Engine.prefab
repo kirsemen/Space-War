@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6795339381722651203}
   - component: {fileID: 6795339381722651202}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Output
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6795339381901165721}
   - component: {fileID: 6795339381901165720}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 6795339382045121455}
   - component: {fileID: 6795339382045121453}
   - component: {fileID: 6795339382045121454}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 6795339383042443158}
   - component: {fileID: 6795339383042443156}
   - component: {fileID: 6795339383042443157}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 6795339383125075453}
   - component: {fileID: 6795339383125075451}
   - component: {fileID: 6795339383125075452}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 6795339383148283583}
   - component: {fileID: 6795339383148283580}
   - component: {fileID: 6795339383148283581}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +440,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6795339383248175953}
   - component: {fileID: 6795339383248175952}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 6795339383300552758}
   - component: {fileID: 6795339383300552757}
   - component: {fileID: 6795339383300552756}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Engine
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3344482686384912773}
   - component: {fileID: 3344482686384912772}
   - component: {fileID: 3344482686384912775}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Armor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 3344482686827079272}
   - component: {fileID: 3344482686827079285}
   - component: {fileID: 3344482686827079274}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3344482687493528604}
   - component: {fileID: 3344482687493528607}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3344482687549544805}
   - component: {fileID: 3344482687549544804}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3344482688057628995}
   - component: {fileID: 3344482688057628994}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Output
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 3344482688098342717}
   - component: {fileID: 3344482688098342718}
   - component: {fileID: 3344482688098342719}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 3344482688168502208}
   - component: {fileID: 3344482688168502210}
   - component: {fileID: 3344482688168502211}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

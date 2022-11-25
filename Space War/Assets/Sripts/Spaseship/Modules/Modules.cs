@@ -41,6 +41,7 @@ public class Modules : MonoBehaviour
     public OutputGrid outputGrid;
     public Parametrs parametrs;
 
+    public LayerMask selectedModuleLayer;
 
     private void Start()
     {
@@ -77,11 +78,7 @@ public class Modules : MonoBehaviour
 
     public Module GetSelectedModule()
     {
-        int layer;
-        if (gameObject.layer == 8)//------------------
-            layer = 9;//------------------
-        else
-            layer = -1;//------------------
+        int layer= (int)Mathf.Log(selectedModuleLayer, 2);
 
         foreach (var item in Equipped)
         {

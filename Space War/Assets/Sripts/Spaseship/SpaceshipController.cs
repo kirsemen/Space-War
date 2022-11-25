@@ -8,15 +8,16 @@ public class SpaceshipController : MonoBehaviour
     public bool Editing = false;
 
 
-    private GameObject InputSpaceship;
+    private GameObject InputSpaceshipCam;
     private GameObject OutputSpaceship;
 
     [HideInInspector]
     public bool InSpacebaseTriger = false;
 
+    public LayerMask SpasebaseLayer;
     private void Start()
     {
-        InputSpaceship =transform.GetChild(0).gameObject;
+        InputSpaceshipCam = transform.GetChild(0).gameObject;
         OutputSpaceship = transform.GetChild(1).gameObject;
     }
     private void Update()
@@ -24,20 +25,20 @@ public class SpaceshipController : MonoBehaviour
         if (GetComponent<Parametrs>().usingEnergy > GetComponent<Parametrs>().energy)
             return;
 
-        if(InSpacebaseTriger&& Input.GetKeyDown(keyToOnEditing))
+        if (InSpacebaseTriger && Input.GetKeyDown(keyToOnEditing))
             Editing = !Editing;
-        else if(!InSpacebaseTriger)
+        else if (!InSpacebaseTriger)
             Editing = false;
         if (Editing)
         {
             OutputSpaceship.SetActive(true);
-            InputSpaceship.SetActive(false);
+            InputSpaceshipCam.SetActive(false);
         }
         else
         {
             OutputSpaceship.SetActive(false);
-            InputSpaceship.SetActive(true);
+            InputSpaceshipCam.SetActive(true);
         }
     }
-    
+
 }

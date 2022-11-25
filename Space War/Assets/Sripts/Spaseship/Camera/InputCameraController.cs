@@ -21,6 +21,7 @@ public class InputCameraController : MonoBehaviour
     
     public LayerMask gridLayer;
     public LayerMask ModuleLayer;
+    public LayerMask SelectedModuleLayer;
 
 
     private Vector2 _mousePosition = new Vector2(0, 0);
@@ -62,8 +63,7 @@ public class InputCameraController : MonoBehaviour
             Q.modules.UpdateParametrs();
             if (Input.GetMouseButtonDown(0))
             {
-                Q.transform.GetChild(0).gameObject.layer = 8;//------------------
-
+                Q.transform.GetChild(0).gameObject.layer = (int)Mathf.Log(ModuleLayer.value,2);
                 Q = null;
             }
         }
@@ -72,12 +72,11 @@ public class InputCameraController : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                int a = 1 << 8;//------------------
                 RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, 100, a))
+                if (Physics.Raycast(ray, out hit, 100, ModuleLayer))
                 {
                     Q = hit.collider.transform.parent.GetComponent<InputModule>();
-                    Q.transform.GetChild(0).gameObject.layer = 9;//------------------
+                    Q.transform.GetChild(0).gameObject.layer = (int)Mathf.Log(SelectedModuleLayer.value, 2);
                 }
 
             }
