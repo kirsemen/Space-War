@@ -7,7 +7,7 @@ public class UINetworkManager : MonoBehaviour
 {
     void OnGUI()
     {
-        GUILayout.BeginArea(new Rect(1080/2, 1960/2, 300, 300));
+        GUILayout.BeginArea(new Rect(Screen.width / 2-150 , Screen.height / 2, 300, 300));
         if (!NetworkManager.Singleton.IsClient && !NetworkManager.Singleton.IsServer)
         {
             if (GUILayout.Button("Client")) NetworkManager.Singleton.StartClient();
