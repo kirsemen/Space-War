@@ -18,6 +18,7 @@ public class InputGrid : MonoBehaviour
 
     private void OnButtonClicked()
     {
+#if DEBUG
         int i = 0;
         while (i < 100)
         {
@@ -35,8 +36,8 @@ public class InputGrid : MonoBehaviour
                 go.transform.localPosition = new Vector3(x, -0.49f, -y);
                 go.name = "x: " + x + ", y:" + y;
             }
+#endif
 
-        
     }
     public void Start()
     {

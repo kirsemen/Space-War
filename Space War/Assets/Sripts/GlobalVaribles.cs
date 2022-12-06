@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GlobalVaribles : MonoBehaviour
 {
-    public static GameObject PLayerTeam1;
-    public static GameObject PLayerTeam2;
+    public static bool IsPLayerTeam1;
+    public static bool IsPLayerTeam2;
     
     public static GameObject PrefabTeam1;
     public static GameObject PrefabTeam2;
@@ -21,6 +21,12 @@ public class GlobalVaribles : MonoBehaviour
     private GameObject _SpawnPointTeam1;
     [SerializeField]
     private GameObject _SpawnPointTeam2;
+
+    private void Start()
+    {
+        IsPLayerTeam1 = false;
+        IsPLayerTeam2=false;
+    }
 
     private void OnValidate()
     {

@@ -15,11 +15,13 @@ public class SpaceshipController : MonoBehaviour
     public bool InSpacebaseTriger = false;
 
     public LayerMask SpasebaseLayer;
+
     private void Start()
     {
         InputSpaceshipCam = transform.GetChild(0).gameObject;
         OutputSpaceship = transform.GetChild(1).gameObject;
     }
+
     private void Update()
     {
         if (GetComponent<Parametrs>().usingEnergy > GetComponent<Parametrs>().energy)
@@ -29,6 +31,8 @@ public class SpaceshipController : MonoBehaviour
             Editing = !Editing;
         else if (!InSpacebaseTriger)
             Editing = false;
+
+        //UI.SetActive(!Editing);
         if (Editing)
         {
             OutputSpaceship.SetActive(true);
