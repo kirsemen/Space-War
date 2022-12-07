@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class GlobalVaribles : MonoBehaviour
+public class GlobalVaribles : NetworkBehaviour
 {
-    public static bool IsPLayerTeam1;
+
+    public static NetworkVariable<bool> IsPLayerTeam1= new NetworkVariable<bool>();
     public static bool IsPLayerTeam2;
     
     public static GameObject PrefabTeam1;
@@ -24,15 +26,33 @@ public class GlobalVaribles : MonoBehaviour
 
     private void Start()
     {
-        IsPLayerTeam1 = false;
-        IsPLayerTeam2=false;
-    }
-
-    private void OnValidate()
-    {
         PrefabTeam1 = _PrefabTeam1;
         PrefabTeam2 = _PrefabTeam2;
         SpawnPointTeam1 = _SpawnPointTeam1;
         SpawnPointTeam2 = _SpawnPointTeam2;
     }
+    //public override void NetworkStart()
+    //{
+    //    base.NetworkStart();
+    //    SpawnServerRPC(NetworkManager.Singleton.LocalClientId);
+    //}
+
+    //[ServerRpc]
+    //private void SpawnServerRPC(ulong clientId)
+    //{
+    //    // get yourGameObject here
+    //    NetworkObject obj = Instantiate(yourGameObject).GetComponent<NetworkObject>();
+    //    obj.SpawnWithOwnership(clientId);
+    //    InitializeClientRPC(clientId, obj.NetworkObjectId);
+    //}
+
+    //[ClientRpc]
+    //private void InitializeClientRPC(ulong clientId, ulong objectId)
+    //{
+    //    if (clientId == NetworkManager.Singleton.LocalClientId)
+    //    {
+    //        GameObject spawnedObject = NetworkSpawnManager.SpawnedObjects[objectId].gameObject;
+    //    }
+    //}
+
 }

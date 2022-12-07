@@ -30,7 +30,11 @@ public class InputCameraController : MonoBehaviour
     private Vector3 _CameraCurentAngle = new Vector3(0, 0, 0);
 
 
-
+    private void Start()
+    {
+        CameraAngle = transform.parent.parent.rotation.eulerAngles;
+        _CameraCurentAngle = transform.parent.parent.rotation.eulerAngles;
+    }
     void Update()
     {
 

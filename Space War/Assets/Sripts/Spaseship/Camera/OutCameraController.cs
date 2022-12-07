@@ -30,7 +30,12 @@ public class OutCameraController : MonoBehaviour
     private Vector3 _CameraCurentAngle = new Vector3(0, 0, 0);
     private Vector3 _MeshCurentAngle = new Vector3(0, 0, 0);
 
-
+    private void Start()
+    {
+        CameraAngle = transform.parent.parent.rotation.eulerAngles;
+        _CameraCurentAngle = transform.parent.parent.rotation.eulerAngles;
+        _MeshCurentAngle = transform.parent.parent.rotation.eulerAngles;
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))

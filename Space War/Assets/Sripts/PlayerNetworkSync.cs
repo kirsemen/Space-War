@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using Unity.Netcode;    
+using Unity.Netcode;
 using UnityEngine;
 
 public class PlayerNetworkSync : NetworkBehaviour
@@ -12,30 +12,26 @@ public class PlayerNetworkSync : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
 
+        //if (!GlobalVaribles.IsPLayerTeam1.Value)
+        //{
+        //    SpawnSpaceshipTeam1();
+        //    if (IsServer)
+        //    {
+        //        GlobalVaribles.IsPLayerTeam1.Value = true;
+        //    }
+        //}
+        //else if (!GlobalVaribles.IsPLayerTeam2.Value)
+        //{
+        //    SpawnSpaceshipTeam2();
+        //    if (IsServer)
+        //    {
+        //        GlobalVaribles.IsPLayerTeam2.Value = true;
+        //    }
+        //}
+
         
 
-        if (IsServer)
-        {
 
-            if (!GlobalVaribles.IsPLayerTeam1)
-            {
-                SpawnSpaceshipTeam1();
-                GlobalVaribles.IsPLayerTeam1 = true;
-            }
-            else if (!GlobalVaribles.IsPLayerTeam2)
-            {
-                SpawnSpaceshipTeam2();
-                GlobalVaribles.IsPLayerTeam2 = true;
-            }
-            ClientRpcParams clientRpcParams = new ClientRpcParams
-            {
-                Send = new ClientRpcSendParams
-                {
-                    TargetClientIds = new ulong[] { OwnerClientId }
-                }
-            };
-            SpawnSpaceshipForOwnerClientRpc(clientRpcParams);
-        }
 
         //if (IsClient)
         //{
@@ -70,59 +66,30 @@ public class PlayerNetworkSync : NetworkBehaviour
         //}
 
     }
-    [ClientRpc]
-    public void SpawnSpaceshipForOwnerClientRpc(ClientRpcParams clientRpcParams = default)
-    {
-        //Camera.main.gameObject.SetActive(false);\
-        //if(name== "Player(Clone)")
-        //{
-        //UI.SetActive(true);
-
-        //}
-        //transform.GetChild(0).GetChild(0).GetChild(0).gameObject.SetActive(true);\
-        
-    }
-
-    [ClientRpc]
-    public void SpawnSpaceshipTeam1ClientRpc()
+    public void SpawnSpaceshipTeam1()
     {
         var go = Instantiate(GlobalVaribles.PrefabTeam1);
         go.transform.parent = transform;
-        go.transform.position = new Vector3(100,100,0);
+        go.transform.position = GlobalVaribles.SpawnPointTeam1.transform.position;
         go.transform.rotation = GlobalVaribles.SpawnPointTeam1.transform.rotation;
-        UI.SetActive(true);
+        if (IsOwner)
+        {
+            Camera.main.gameObject.SetActive(false);
+            transform.GetChild(0).GetChild(0).GetChild(0).gameObject.SetActive(true);
+        }
+
     }
-    [ClientRpc]
-    public void SpawnSpaceshipTeam2ClientRpc()
+    public void SpawnSpaceshipTeam2()
     {
         var go = Instantiate(GlobalVaribles.PrefabTeam2);
         go.transform.parent = transform;
         go.transform.position = GlobalVaribles.SpawnPointTeam2.transform.position;
         go.transform.rotation = GlobalVaribles.SpawnPointTeam2.transform.rotation;
-    }
-
-    public void SpawnSpaceshipTeam1()
-    {
-        //if (!IsHost)
-        //{
-        //    var go = Instantiate(GlobalVaribles.PrefabTeam1);
-        //    go.transform.parent = transform;
-        //    go.transform.position = GlobalVaribles.SpawnPointTeam1.transform.position;
-        //    go.transform.rotation = GlobalVaribles.SpawnPointTeam1.transform.rotation;
-        //}
-        SpawnSpaceshipTeam1ClientRpc();
-
-    }
-    public void SpawnSpaceshipTeam2()
-    {
-        //if (!IsHost)
-        //{
-        //    var go = Instantiate(GlobalVaribles.PrefabTeam2);
-        //    go.transform.parent = transform;
-        //    go.transform.position = GlobalVaribles.SpawnPointTeam2.transform.position;
-        //    go.transform.rotation = GlobalVaribles.SpawnPointTeam2.transform.rotation;
-        //}
-        SpawnSpaceshipTeam2ClientRpc();
+        if (IsOwner)
+        {
+            Camera.main.gameObject.SetActive(false);
+            transform.GetChild(0).GetChild(0).GetChild(0).gameObject.SetActive(true);
+        }
 
     }
 
