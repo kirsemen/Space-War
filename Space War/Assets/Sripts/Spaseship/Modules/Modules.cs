@@ -99,7 +99,7 @@ public class Modules : MonoBehaviour
 
     public void UpdateParametrs()
     {
-        parametrs.Reset();
+        parametrs.reset();
         foreach (var item in Equipped)
         {
             parametrs.HP += item.GetComponent<DefaultType>().HP;
@@ -115,18 +115,18 @@ public class Modules : MonoBehaviour
                     parametrs.rotationSpeed += item.GetComponent<Engine>().rotationSpeed;
                     break;
                 case Type._Type.generator:
-                    parametrs.energy+=item.GetComponent<Generator>().EnergyProduction;
+                    parametrs.energy += item.GetComponent<Generator>().EnergyProduction;
                     break;
                 case Type._Type.shield:
                     parametrs.shield += item.GetComponent<Shield>().shield;
                     parametrs.maxShield += item.GetComponent<Shield>().shield;
-                    parametrs.speedRepairShield+=item.GetComponent<Shield>().speedRepairShield;
+                    parametrs.speedRepairShield += item.GetComponent<Shield>().speedRepairShield;
                     break;
                 default:
                     break;
             }
         }
-        
+
     }
 
 }

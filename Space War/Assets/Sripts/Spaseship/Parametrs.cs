@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 public class Parametrs : MonoBehaviour
 {
-    
+
     public Parametrs target;
 
     public float HP = 0;
@@ -23,7 +24,7 @@ public class Parametrs : MonoBehaviour
     public float acceleration = 0;
     public float deceleration = 0;
 
-    public float rotationSpeed=0;
+    public float rotationSpeed = 0;
 
     private void Update()
     {
@@ -56,7 +57,7 @@ public class Parametrs : MonoBehaviour
                 }
                 break;
             case Weaponry.DamageType.penetrating:
-                HP-=damage;
+                HP -= damage;
                 shield -= damage;
                 break;
             default:
@@ -65,7 +66,7 @@ public class Parametrs : MonoBehaviour
         check();
     }
 
-    public void Reset()
+    public void reset()
     {
         HP = 0;
         maxHP = 0;
@@ -85,4 +86,85 @@ public class Parametrs : MonoBehaviour
 
         rotationSpeed = 0;
     }
+
+    public void Set(ParametrsSync p)
+    {
+        HP = p.HP;
+        maxHP = p.maxHP;
+        shield = p.shield;
+        maxShield = p.maxShield;
+        speedRepairShield = p.speedRepairShield;
+        energy = p.energy;
+        usingEnergy = p.usingEnergy;
+        MaxSpeed = p.MaxSpeed;
+        MinSpeed = p.MinSpeed;
+        acceleration = p.acceleration;
+        deceleration = p.deceleration;
+        rotationSpeed = p.rotationSpeed;
+    }
 }
+
+public struct ParametrsSync : INetworkSerializable
+{
+    public float HP;
+    public float maxHP;
+
+    public float shield;
+    public float maxShield;
+    public float speedRepairShield;
+
+    public int energy;
+    public int usingEnergy;
+
+    public float MaxSpeed;
+    public float MinSpeed;
+
+    public float acceleration;
+    public float deceleration;
+
+    public float rotationSpeed;
+
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    {
+        serializer.SerializeValue(ref HP);
+        serializer.SerializeValue(ref maxHP);
+        serializer.SerializeValue(ref shield);
+        serializer.SerializeValue(ref maxShield);
+        serializer.SerializeValue(ref speedRepairShield);
+        serializer.SerializeValue(ref energy);
+        serializer.SerializeValue(ref usingEnergy);
+        serializer.SerializeValue(ref MaxSpeed);
+        serializer.SerializeValue(ref acceleration);
+        serializer.SerializeValue(ref deceleration);
+        serializer.SerializeValue(ref rotationSpeed);
+    }
+    public ParametrsSync(Parametrs p)
+    {
+        HP = p.HP;
+        maxHP = p.maxHP;
+        shield = p.shield;
+        maxShield = p.maxShield;
+        speedRepairShield = p.speedRepairShield;
+        energy = p.energy;
+        usingEnergy = p.usingEnergy;
+        MaxSpeed = p.MaxSpeed;
+        MinSpeed = p.MinSpeed;
+        acceleration = p.acceleration;
+        deceleration = p.deceleration;
+        rotationSpeed = p.rotationSpeed;
+    }
+}
+
+//public struct MyComplexStruct : INetworkSerializable
+//{
+//    public Vector3 Position;
+//    public Quaternion Rotation;
+
+//    // INetworkSerializable
+//    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+//    {
+//        serializer.SerializeValue(ref Position);
+//        serializer.SerializeValue(ref Rotation);
+//    }
+//    // ~INetworkSerializable
+//}
