@@ -20,6 +20,8 @@ public class PlayerNetworkSync : NetworkBehaviour
     public NetworkVariable<Quaternion> rotation = new NetworkVariable<Quaternion>();
     public NetworkVariable<ParametrsSync> parametrsSync = new NetworkVariable<ParametrsSync>();
     public NetworkVariable<PlayerTeam> Team = new NetworkVariable<PlayerTeam>(PlayerTeam.None);
+    public NetworkVariable<int> parametrId = new NetworkVariable<int>();
+
     private bool Initiated = false;
 
     public override void OnNetworkSpawn()
@@ -36,7 +38,7 @@ public class PlayerNetworkSync : NetworkBehaviour
                 GlobalVaribles.IsPLayerTeam2 = true;
                 Team.Value = PlayerTeam.Team2;
             }
-
+            parametrId.Value = ParametrId.GetNewId();
         }
     }
     [ServerRpc]
@@ -59,6 +61,7 @@ public class PlayerNetworkSync : NetworkBehaviour
                 SpawnSpaceshipTeam1();
             else if (Team.Value == PlayerTeam.Team2)
                 SpawnSpaceshipTeam2();
+            transform.GetChild(0).GetComponent<Parametrs>().id = parametrId.Value;
         }
 
         if (IsOwner)
@@ -82,6 +85,7 @@ public class PlayerNetworkSync : NetworkBehaviour
         go.transform.rotation = GlobalVaribles.SpawnPointTeam1.transform.rotation;
         if (IsOwner)
         {
+            UI.SetActive(true);
             Camera.main.gameObject.SetActive(false);
             transform.GetChild(0).GetChild(0).GetChild(0).gameObject.SetActive(true);
         }
@@ -95,6 +99,7 @@ public class PlayerNetworkSync : NetworkBehaviour
         go.transform.rotation = GlobalVaribles.SpawnPointTeam2.transform.rotation;
         if (IsOwner)
         {
+            UI.SetActive(true);
             Camera.main.gameObject.SetActive(false);
             transform.GetChild(0).GetChild(0).GetChild(0).gameObject.SetActive(true);
         }

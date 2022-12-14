@@ -7,6 +7,7 @@ public class Parametrs : MonoBehaviour
 {
 
     public Parametrs target;
+    public int id = 0;
 
     public float HP = 0;
     public float maxHP = 0;
@@ -25,6 +26,23 @@ public class Parametrs : MonoBehaviour
     public float deceleration = 0;
 
     public float rotationSpeed = 0;
+
+    public static Parametrs FindTargetById(int id)
+    {
+        GameObject[] allObjects = FindObjectsOfType<GameObject>();
+        foreach (GameObject go in allObjects)
+        {
+            try
+            {
+                if (go.GetComponent<Parametrs>().id == id)
+                {
+                    return go.GetComponent<Parametrs>();
+                }
+            }
+            catch (System.Exception) { }
+        }
+        return null;
+    }
 
     private void Update()
     {
@@ -89,6 +107,7 @@ public class Parametrs : MonoBehaviour
 
     public void Set(ParametrsSync p)
     {
+        target = (p.targetId == -1) ? null : FindTargetById(p.targetId);
         HP = p.HP;
         maxHP = p.maxHP;
         shield = p.shield;
@@ -106,6 +125,8 @@ public class Parametrs : MonoBehaviour
 
 public struct ParametrsSync : INetworkSerializable
 {
+    public int targetId;
+
     public float HP;
     public float maxHP;
 
@@ -126,6 +147,7 @@ public struct ParametrsSync : INetworkSerializable
 
     public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
     {
+        serializer.SerializeValue(ref targetId);
         serializer.SerializeValue(ref HP);
         serializer.SerializeValue(ref maxHP);
         serializer.SerializeValue(ref shield);
@@ -140,6 +162,7 @@ public struct ParametrsSync : INetworkSerializable
     }
     public ParametrsSync(Parametrs p)
     {
+        targetId = (p.target == null) ? -1 : p.target.id;
         HP = p.HP;
         maxHP = p.maxHP;
         shield = p.shield;
@@ -168,3 +191,12 @@ public struct ParametrsSync : INetworkSerializable
 //    }
 //    // ~INetworkSerializable
 //}
+
+class ParametrId
+{
+    private static int counter;
+    public static int GetNewId()
+    {
+        return counter++;
+    }
+}

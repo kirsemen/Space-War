@@ -34,8 +34,7 @@ public class InputModule : MonoBehaviour
             inputGrid = modules.inputGrid;
             try
             {
-                if (gridPos.x != -1 && gridPos.y != -1)
-                    transform.position = inputGrid.grid[gridPos.y, gridPos.x].transform.position + margin;
+                transform.position = inputGrid.grid[gridPos.y, gridPos.x].transform.position + margin;
             }
             catch (System.Exception) { }
 

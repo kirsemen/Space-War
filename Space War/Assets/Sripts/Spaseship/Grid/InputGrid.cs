@@ -58,6 +58,7 @@ public class InputGrid : MonoBehaviour
     {
         if (!Application.IsPlaying(gameObject)|| maxSize.x!=0)
         {
+            
             for (int i = 0; i < transform.childCount; i++)
             {
                 var child = transform.GetChild(i).GetComponent<InputGridElement>();
