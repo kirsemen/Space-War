@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class UI : MonoBehaviour
 {
-    static UI main;
+    public static UI main;
+    public GameObject myPrefab;
     private void Awake()
     {
         main = this;

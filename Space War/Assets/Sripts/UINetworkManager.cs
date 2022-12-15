@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class UINetworkManager : MonoBehaviour
 {
-    public GameObject myPrefab;
     void OnGUI()
     {
         GUILayout.BeginArea(new Rect(Screen.width / 2 - 150, Screen.height / 2, 300, 300));
@@ -13,17 +12,7 @@ public class UINetworkManager : MonoBehaviour
         {
             if (GUILayout.Button("Client")) NetworkManager.Singleton.StartClient();
             if (GUILayout.Button("Server")) NetworkManager.Singleton.StartServer();
-            if (GUILayout.Button("Host"))
-            {
-                NetworkManager.Singleton.StartHost();
-                if (NetworkManager.Singleton.IsServer)
-                {
-                    GameObject go = Instantiate(myPrefab);
-                    go.GetComponent<NetworkObject>().Spawn();
-
-                }
-
-            }
+            if (GUILayout.Button("Host")) NetworkManager.Singleton.StartHost();
         }
 
         GUILayout.EndArea();

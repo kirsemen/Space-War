@@ -43,10 +43,6 @@ public class Modules : MonoBehaviour
 
     public LayerMask selectedModuleLayer;
 
-    private void Start()
-    {
-        UpdateParametrs();
-    }
     private void Update()
     {
         for (int i = 0; i < Equipped.Count; i++)
@@ -73,6 +69,7 @@ public class Modules : MonoBehaviour
             obj.transform.parent = transform.GetChild(1);
             obj.transform.GetComponent<Module>().isEqiup = false;
         }
+        UpdateParametrs();
     }
 
 

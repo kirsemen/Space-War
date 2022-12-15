@@ -32,9 +32,9 @@ public class OutCameraController : MonoBehaviour
 
     private void Start()
     {
-        CameraAngle = transform.parent.parent.rotation.eulerAngles;
-        _CameraCurentAngle = transform.parent.parent.rotation.eulerAngles;
-        _MeshCurentAngle = transform.parent.parent.rotation.eulerAngles;
+        CameraAngle = transform.parent.rotation.eulerAngles;
+        _CameraCurentAngle = transform.parent.rotation.eulerAngles;
+        _MeshCurentAngle = transform.parent.rotation.eulerAngles;
     }
     void Update()
     {

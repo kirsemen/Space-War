@@ -683,6 +683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  id: 0
   HP: 0
   maxHP: 0
   shield: 0
@@ -3119,8 +3120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16174de0f2106ac44bc8833b75bb195a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Q: {fileID: 0}
-  E: {fileID: 1169968499299240736}
+  ChooseModule: {fileID: 0}
+  CamHelper: {fileID: 1169968499299240736}
   CameraSoftRotation: 0.03
   SpeedSizing: 0.3
   MinSize: 0.5

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ public class AI : MonoBehaviour
 
     private void Update()
     {
-        if (parametrs.target == null)
+        if (parametrs.target == null&&transform.parent.parent.GetComponent<NetworkObject>().IsOwner)
         {
             GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
             Parametrs nowTarget=null;

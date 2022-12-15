@@ -4,17 +4,15 @@ using System.Globalization;
 using Unity.Netcode;
 using UnityEngine;
 
-
+public enum PlayerTeam
+{
+    None,
+    Team1,
+    Team2
+}
 
 public class PlayerNetworkSync : NetworkBehaviour
 {
-    public enum PlayerTeam
-    {
-        None,
-        Team1,
-        Team2
-    }
-
     
     public NetworkVariable<Vector3> position = new NetworkVariable<Vector3>();
     public NetworkVariable<Quaternion> rotation = new NetworkVariable<Quaternion>();
@@ -39,6 +37,12 @@ public class PlayerNetworkSync : NetworkBehaviour
                 Team.Value = PlayerTeam.Team2;
             }
             parametrId.Value = ParametrId.GetNewId();
+        }
+        if (IsServer && IsOwner)
+        {
+
+            GameObject go = Instantiate(UI.main.myPrefab);
+            go.GetComponent<NetworkObject>().Spawn();
         }
     }
     [ServerRpc]
@@ -79,10 +83,12 @@ public class PlayerNetworkSync : NetworkBehaviour
 
     public void SpawnSpaceshipTeam1()
     {
-        var go = Instantiate(GlobalVaribles.PrefabTeam1);
+        var go = Instantiate(GlobalVaribles.PrefabPlayerTeam1);
         go.transform.parent = transform;
-        go.transform.position = GlobalVaribles.SpawnPointTeam1.transform.position;
-        go.transform.rotation = GlobalVaribles.SpawnPointTeam1.transform.rotation;
+        go.transform.GetChild(0).position = GlobalVaribles.SpawnPointPlayerTeam1.transform.position;
+        go.transform.GetChild(1).position = GlobalVaribles.SpawnPointPlayerTeam1.transform.position;
+        go.transform.GetChild(2).position = GlobalVaribles.SpawnPointPlayerTeam1.transform.position;
+        go.transform.GetChild(0).rotation = GlobalVaribles.SpawnPointPlayerTeam1.transform.rotation;
         if (IsOwner)
         {
             UI.SetActive(true);
@@ -93,10 +99,12 @@ public class PlayerNetworkSync : NetworkBehaviour
     }
     public void SpawnSpaceshipTeam2()
     {
-        var go = Instantiate(GlobalVaribles.PrefabTeam2);
+        var go = Instantiate(GlobalVaribles.PrefabPlayerTeam2);
         go.transform.parent = transform;
-        go.transform.position = GlobalVaribles.SpawnPointTeam2.transform.position;
-        go.transform.rotation = GlobalVaribles.SpawnPointTeam2.transform.rotation;
+        go.transform.GetChild(0).position = GlobalVaribles.SpawnPointPlayerTeam2.transform.position;
+        go.transform.GetChild(1).position = GlobalVaribles.SpawnPointPlayerTeam2.transform.position;
+        go.transform.GetChild(2).position = GlobalVaribles.SpawnPointPlayerTeam2.transform.position;
+        go.transform.GetChild(0).rotation = GlobalVaribles.SpawnPointPlayerTeam2.transform.rotation;
         if (IsOwner)
         {
             UI.SetActive(true);

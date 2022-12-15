@@ -33,7 +33,7 @@ public class OutputModule : MonoBehaviour
             if (element != null)
             {
                 transform.position = element.transform.position;
-                transform.localRotation = element.transform.rotation;
+                transform.rotation = element.transform.rotation;
 
             }
         }

@@ -28,18 +28,18 @@ public class InputModule : MonoBehaviour
     }
     private void Update()
     {
-        if (!Application.IsPlaying(gameObject))
+        
+        modules = transform.parent.parent.parent.GetComponent<Modules>();
+        inputGrid = modules.inputGrid;
+        try
         {
-            modules = transform.parent.parent.parent.GetComponent<Modules>();
-            inputGrid = modules.inputGrid;
-            try
-            {
-                transform.position = inputGrid.grid[gridPos.y, gridPos.x].transform.position + margin;
-            }
-            catch (System.Exception) { }
-
+            
+            transform.position = inputGrid.grid[gridPos.y, gridPos.x].transform.position + margin;
         }
-        else
+        catch (System.Exception) { }
+
+        
+        if (Application.IsPlaying(gameObject))
         {
             if (transform.parent.GetComponent<Module>() == modules.GetSelectedModule())
                 transform.GetChild(1).gameObject.SetActive(true);

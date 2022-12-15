@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 public class SpaceshipController : MonoBehaviour
@@ -24,7 +25,7 @@ public class SpaceshipController : MonoBehaviour
 
     private void Update()
     {
-        if (GetComponent<Parametrs>().usingEnergy > GetComponent<Parametrs>().energy)
+        if (GetComponent<Parametrs>().usingEnergy <= GetComponent<Parametrs>().energy&&transform.parent.GetComponent<NetworkObject>().IsOwner)
         {
             if (InSpacebaseTriger && Input.GetKeyDown(keyToOnEditing))
                 Editing = !Editing;
@@ -33,7 +34,7 @@ public class SpaceshipController : MonoBehaviour
         }
 
 
-        //UI.SetActive(!Editing);
+        UI.SetActive(!Editing);
         if (Editing)
         {
             OutputSpaceship.SetActive(true);
