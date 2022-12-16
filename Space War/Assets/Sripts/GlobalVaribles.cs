@@ -12,6 +12,8 @@ public class GlobalVaribles : MonoBehaviour
     public static GameObject PrefabPlayerTeam1;
     public static GameObject PrefabPlayerTeam2;
 
+    public static GameObject PrefabBotController;
+
     public static GameObject PrefabBotTeam1;
     public static GameObject PrefabBotTeam2;
     
@@ -22,6 +24,9 @@ public class GlobalVaribles : MonoBehaviour
     private GameObject _PrefabPlayerTeam1;
     [SerializeField]
     private GameObject _PrefabPlayerTeam2;
+
+    [SerializeField]
+    private GameObject _PrefabBotController;
 
     [SerializeField]
     private GameObject _PrefabBotTeam1;
@@ -37,6 +42,8 @@ public class GlobalVaribles : MonoBehaviour
     {
         PrefabPlayerTeam1 = _PrefabPlayerTeam1;
         PrefabPlayerTeam2 = _PrefabPlayerTeam2;
+
+        PrefabBotController = _PrefabBotController;
 
         PrefabBotTeam1 = _PrefabBotTeam1;
         PrefabBotTeam2 = _PrefabBotTeam2;

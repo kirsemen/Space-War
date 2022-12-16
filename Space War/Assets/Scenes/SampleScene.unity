@@ -532,30 +532,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1054921392}
   - component: {fileID: 1054921391}
-  - component: {fileID: 1054921390}
+  - component: {fileID: 1054921393}
   m_Layer: 0
-  m_Name: GLOBAL VARIBLES
+  m_Name: GAME
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1054921390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1054921389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 296100887
-  AlwaysReplicateAsRoot: 0
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
 --- !u!114 &1054921391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,6 +554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _PrefabPlayerTeam1: {fileID: 1169968498634547841, guid: 055862d894e5b9841ab35b5fb52e8897, type: 3}
   _PrefabPlayerTeam2: {fileID: 1169968498634547841, guid: aeff1ed42182b0e49a5d6f0ea3128a3a, type: 3}
+  _PrefabBotController: {fileID: 669867212689456362, guid: 05e93086693884840b92a21a06e1f456, type: 3}
   _PrefabBotTeam1: {fileID: 4726239204129480627, guid: 561b7faa7c5c0f842b4b49e73a848656, type: 3}
   _PrefabBotTeam2: {fileID: 4726239204129480627, guid: bcdc7a6aef3f4b849a5f877a33404102, type: 3}
   _SpawnPointPlayerTeam1: {fileID: 239564259}
@@ -589,6 +574,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1054921393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054921389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f021417e25783d4409c8a55ccbcdfb49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1281584408
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,7 +784,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed588c888dd4d6047aa66aaa8863e849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPrefab: {fileID: 669867212689456362, guid: 05e93086693884840b92a21a06e1f456, type: 3}
 --- !u!1001 &1837478823
 PrefabInstance:
   m_ObjectHideFlags: 0

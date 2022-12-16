@@ -38,12 +38,6 @@ public class PlayerNetworkSync : NetworkBehaviour
             }
             parametrId.Value = ParametrId.GetNewId();
         }
-        if (IsServer && IsOwner)
-        {
-
-            GameObject go = Instantiate(UI.main.myPrefab);
-            go.GetComponent<NetworkObject>().Spawn();
-        }
     }
     [ServerRpc]
     public void SetServerRpc(Vector3 p, Quaternion r, ParametrsSync ps)
